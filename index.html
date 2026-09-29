@@ -22,7 +22,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:radial-gradient(circ
 .admin-btn.active{background:linear-gradient(135deg,var(--c4),var(--c3))}
 .sound-btn{position:fixed;top:12px;right:70px;z-index:1000;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--c7),var(--c8));border:2px solid var(--c4);border-radius:12px;cursor:pointer;transition:all .2s;padding:0;color:var(--c1);font-size:20px}
 .sound-btn.off{opacity:.55}
-.game{width:100%;max-width:560px;padding-bottom:120px}
+.game{width:100%;max-width:560px;padding-bottom:180px}
 h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradient(90deg,var(--c3),var(--c4),var(--c5),var(--c6));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 14px var(--glow2));letter-spacing:2px}
 .prestige-badge{text-align:center;font-size:12px;color:#fcd34d;font-weight:800;letter-spacing:2px;margin-bottom:6px}
 .balance-box{text-align:center;padding:12px;background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(124,58,237,.1));border:1px solid var(--c4);border-radius:16px;margin-bottom:10px;position:relative;overflow:hidden}
@@ -48,7 +48,7 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .wheel-center{fill:url(#gradCenter);stroke:var(--c3);stroke-width:2}
 .wheel-center-text{fill:var(--c1);font-size:18px;font-weight:900;text-anchor:middle;dominant-baseline:middle;font-family:inherit}
 .wheel-center-sub{fill:var(--c4);font-size:7px;font-weight:700;text-anchor:middle;dominant-baseline:middle;font-family:inherit;letter-spacing:1px}
-.wheel-arrow{position:absolute;top:50%;left:50%;width:calc(50% - 10px);height:8px;transform-origin:0 50%;transform:translate(0,-50%) rotate(0deg);pointer-events:none;z-index:5;transition:transform 5s cubic-bezier(.15,.9,.15,1)}
+.wheel-arrow{position:absolute;top:50%;left:50%;width:calc(50% - 20px);height:8px;transform-origin:0 50%;transform:translate(0,-50%) rotate(0deg);pointer-events:none;z-index:5;transition:transform 5s cubic-bezier(.15,.9,.15,1)}
 .wheel-arrow-body{position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--c3) 60%,var(--c1));border-radius:2px}
 .wheel-arrow-tip{position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:0;height:0;border:14px solid transparent;border-left-color:var(--c1);filter:drop-shadow(0 0 12px var(--glow))}
 .wheel-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--c1),var(--c3) 40%,var(--c5) 80%);box-shadow:0 0 20px var(--glow);z-index:6;border:2px solid var(--c1)}
@@ -175,7 +175,7 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .game-card .info{flex:1}
 .game-card .name{font-size:17px;font-weight:900;color:var(--c1);margin-bottom:3px}
 .game-card .desc{font-size:12px;color:var(--c2);font-weight:600}
-.bottom-bar{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:900;display:flex;gap:12px;align-items:center}
+.bottom-bar{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:950;display:flex;gap:12px;align-items:center;pointer-events:auto}
 .icon-btn{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,var(--c7),var(--c8),var(--c9));border:2px solid var(--c5);cursor:pointer;transition:all .2s;padding:0;display:flex;align-items:center;justify-content:center;color:var(--c1)}
 .icon-btn:hover{background:linear-gradient(135deg,var(--c8),var(--c7),var(--c8));transform:translateY(-2px)}
 .icon-btn svg{width:32px;height:32px;filter:drop-shadow(0 0 8px var(--glow))}
@@ -244,7 +244,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .theme-btn:hover{transform:translateY(-2px)}
 .theme-btn.active{border-color:#fff !important;box-shadow:0 0 20px rgba(255,255,255,.5)}
 
-/* МЕНЮ ПРИ ЗАХОДЕ */
 .welcome-overlay{position:fixed;inset:0;background:rgba(5,2,10,.85);backdrop-filter:blur(10px);z-index:5000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:1;transition:opacity .35s}
 .welcome-overlay.hide{opacity:0;pointer-events:none}
 .welcome-box{background:linear-gradient(160deg,var(--bg-top) 0%,var(--c8) 60%,var(--bg-bot) 100%);border:2px solid var(--c3);border-radius:24px;padding:32px 24px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.85);position:relative;overflow:hidden;animation:welcomeIn .5s cubic-bezier(.34,1.56,.64,1)}
@@ -544,9 +543,9 @@ function fmt(n){if(n<1000)return Math.floor(n).toString();for(const u of UNITS){
 function parseBet(str){str=String(str).trim().toUpperCase().replace(',','.');const m=str.match(/^([\d.]+)\s*([KMBTQ]?)$/);if(!m)return NaN;const n=parseFloat(m[1]);if(isNaN(n))return NaN;const mult={K:1e3,M:1e6,B:1e9,T:1e12,Q:1e15}[m[2]]||1;return Math.floor(n*mult)}
 
 const I18N={
-  ru:{admin:"Админ-панель",adminCode:"Введи код доступа",login:"Войти",accessOk:"Доступ разрешён",adminWinChance:"🎯 Процент победы:",chance:"Шанс",mode:"Режим",setBalance:"📌 Установить баланс:",addBalance:"➕ Пополнить:",zeroBalance:"Обнулить баланс",resetStats:"Сбросить статистику",logout:"Выйти",close:"Закрыть",profile:"👤 ПРОФИЛЬ",winRate:"Процент побед",record:"Личный рекорд",games:"Всего игр",wl:"Побед / поражений",profit:"Общий профит",prestige:"Престиж",minigames:"🎮 МИНИ-ИГРЫ",flappyDesc:"1 очко = 200 монет",minesName:"МИНЫ",minesDesc:"Поле 5×5 · выбор мин 3/5/10",towerName:"БАШНЯ",towerDesc:"9 уровней · 5 дверей",settings:"⚙️ НАСТРОЙКИ",language:"🌐 Язык",theme:"🎨 Тема",purple:"Фиолетовая",blue:"Синяя",green:"Зелёная",red:"Красная",gold:"Золотая",pink:"Розовая",cyan:"Бирюзовая",orange:"Оранжевая",balance:"Баланс",betAndChance:"🎯 Ставка и шанс",winChance:"Шанс выигрыша",multiplier:"Множитель",win:"Выигрыш",lose:"Проигрыш",spin:"🎰 КРУТИТЬ",prestigeBtn:"🔥 ПРЕСТИЖ",history:"📜 История",spinAndWin:"Крути колесо и пробуй удачу!",footerHint:"💜 Чем ниже шанс — тем выше множитель",resetProgress:"🗑 Сбросить прогресс",play:"ИГРАТЬ",flappyHint:"Тапай чтобы летать. Проходи между трубами.<br><b>1 очко = 200 монет</b>",WIN:"ПОБЕДА",LOSE:"ПОРАЖЕНИЕ",GAMEOVER:"💀 ИГРА ОКОНЧЕНА",EARNED:"Заработано",POINTS:"Очки",START:"НАЧАТЬ",CASH:"ЗАБРАТЬ",minesLabel:"Мины:",opened:"Открыто",towerLevel:"Уровень",BUST:"Проигрыш",noGames:"Пока нет игр",bonusMsg:"💜 Не волнуйся, не все потеряно!",prestigeNeed:"Нужно 1M на балансе",prestigeConfirm:"Сбросить баланс и статистику, но получить +5% к множителю навсегда?",prestigeDone:"Престиж",notEnough:"Недостаточно средств",badBet:"Некорректная ставка",wrongCode:"Неверный код",accessGranted:"Доступ разрешён",loggedOut:"Вы вышли из админки",balanceSet:"Баланс установлен",statsReset:"Статистика сброшена",resetAll:"Сбросить весь прогресс?",resetDone:"Прогресс сброшен",chooseBet:"Выбирай ставку и шанс",boom:"Взрыв!"},
-  uk:{admin:"Адмін-панель",adminCode:"Введи код доступу",login:"Увійти",accessOk:"Доступ дозволено",adminWinChance:"🎯 Відсоток перемоги:",chance:"Шанс",mode:"Режим",setBalance:"📌 Встановити баланс:",addBalance:"➕ Поповнити:",zeroBalance:"Обнулити баланс",resetStats:"Скинути статистику",logout:"Вийти",close:"Закрити",profile:"👤 ПРОФІЛЬ",winRate:"Відсоток перемог",record:"Особистий рекорд",games:"Всього ігор",wl:"Перемог / поразок",profit:"Загальний прибуток",prestige:"Престиж",minigames:"🎮 МІНІ-ІГРИ",flappyDesc:"1 очко = 200 монет",minesName:"МІНИ",minesDesc:"Поле 5×5 · вибір мін 3/5/10",towerName:"ВЕЖА",towerDesc:"9 рівнів · 5 дверей",settings:"⚙️ НАЛАШТУВАННЯ",language:"🌐 Мова",theme:"🎨 Тема",purple:"Фіолетова",blue:"Синя",green:"Зелена",red:"Червона",gold:"Золота",pink:"Рожева",cyan:"Бірюзова",orange:"Помаранчева",balance:"Баланс",betAndChance:"🎯 Ставка та шанс",winChance:"Шанс виграшу",multiplier:"Множник",win:"Виграш",lose:"Програш",spin:"🎰 КРУТИТИ",prestigeBtn:"🔥 ПРЕСТИЖ",history:"📜 Історія",spinAndWin:"Крути колесо та випробовуй удачу!",footerHint:"💜 Чим нижчий шанс — тим вищий множник",resetProgress:"🗑 Скинути прогрес",play:"ГРАТИ",flappyHint:"Тапай щоб літати.<br><b>1 очко = 200 монет</b>",WIN:"ПЕРЕМОГА",LOSE:"ПОРАЗКА",GAMEOVER:"💀 ГРА ЗАКІНЧЕНА",EARNED:"Зароблено",POINTS:"Очки",START:"ПОЧАТИ",CASH:"ЗАБРАТИ",minesLabel:"Міни:",opened:"Відкрито",towerLevel:"Рівень",BUST:"Поразка",noGames:"Поки немає ігор",bonusMsg:"💜 Не хвилюйся, не все втрачено!",prestigeNeed:"Потрібно 1M",prestigeConfirm:"Скинути все заради +5% множника?",prestigeDone:"Престиж",notEnough:"Недостатньо коштів",badBet:"Некоректна ставка",wrongCode:"Невірний код",accessGranted:"Доступ дозволено",loggedOut:"Ви вийшли",balanceSet:"Баланс встановлено",statsReset:"Статистику скинуто",resetAll:"Скинути весь прогрес?",resetDone:"Прогрес скинуто",chooseBet:"Вибирай ставку та шанс",boom:"Вибух!"},
-  en:{admin:"Admin panel",adminCode:"Enter access code",login:"Login",accessOk:"Access granted",adminWinChance:"🎯 Win chance:",chance:"Chance",mode:"Mode",setBalance:"📌 Set balance:",addBalance:"➕ Add:",zeroBalance:"Reset balance",resetStats:"Reset stats",logout:"Logout",close:"Close",profile:"👤 PROFILE",winRate:"Win rate",record:"Personal best",games:"Total games",wl:"Wins / losses",profit:"Total profit",prestige:"Prestige",minigames:"🎮 MINIGAMES",flappyDesc:"1 point = 200 coins",minesName:"MINES",minesDesc:"5×5 field · mines 3/5/10",towerName:"TOWER",towerDesc:"9 levels · 5 doors",settings:"⚙️ SETTINGS",language:"🌐 Language",theme:"🎨 Theme",purple:"Purple",blue:"Blue",green:"Green",red:"Red",gold:"Gold",pink:"Pink",cyan:"Cyan",orange:"Orange",balance:"Balance",betAndChance:"🎯 Bet & chance",winChance:"Win chance",multiplier:"Multiplier",win:"Win",lose:"Loss",spin:"🎰 SPIN",prestigeBtn:"🔥 PRESTIGE",history:"📜 History",spinAndWin:"Spin the wheel!",footerHint:"💜 Lower chance — higher multiplier",resetProgress:"🗑 Reset progress",play:"PLAY",flappyHint:"Tap to fly.<br><b>1 point = 200 coins</b>",WIN:"WIN",LOSE:"LOSE",GAMEOVER:"💀 GAME OVER",EARNED:"Earned",POINTS:"Points",START:"START",CASH:"CASH OUT",minesLabel:"Mines:",opened:"Opened",towerLevel:"Level",BUST:"BUST",noGames:"No games yet",bonusMsg:"💜 Don't worry, you're not done!",prestigeNeed:"Need 1M",prestigeConfirm:"Reset everything for +5% multiplier?",prestigeDone:"Prestige",notEnough:"Not enough funds",badBet:"Invalid bet",wrongCode:"Wrong code",accessGranted:"Access granted",loggedOut:"You left admin",balanceSet:"Balance set",statsReset:"Stats reset",resetAll:"Reset ALL progress?",resetDone:"Progress reset",chooseBet:"Choose bet and chance",boom:"Boom!"}
+  ru:{admin:"Админ-панель",adminCode:"Введи код доступа",login:"Войти",accessOk:"Доступ разрешён",adminWinChance:"🎯 Процент победы:",chance:"Шанс",mode:"Режим",setBalance:"📌 Установить баланс:",addBalance:"➕ Пополнить:",zeroBalance:"Обнулить баланс",resetStats:"Сбросить статистику",logout:"Выйти",close:"Закрыть",profile:"👤 ПРОФИЛЬ",winRate:"Процент побед",record:"Личный рекорд",games:"Всего игр",wl:"Побед / поражений",profit:"Общий профит",prestige:"Престиж",minigames:"🎮 МИНИ-ИГРЫ",flappyDesc:"1 очко = 200 монет",minesName:"МИНЫ",minesDesc:"Поле 5×5 · выбор мин 3/5/10",towerName:"БАШНЯ",towerDesc:"9 уровней · 5 дверей",settings:"⚙️ НАСТРОЙКИ",language:"🌐 Язык",theme:"🎨 Тема",purple:"Фиолетовая",blue:"Синяя",green:"Зелёная",red:"Красная",gold:"Золотая",pink:"Розовая",cyan:"Бирюзовая",orange:"Оранжевая",balance:"Баланс",betAndChance:"🎯 Ставка и шанс",winChance:"Шанс выигрыша",multiplier:"Множитель",win:"Выигрыш",lose:"Проигрыш",spin:"🎰 КРУТИТЬ",prestigeBtn:"🔥 ПРЕСТИЖ",history:"📜 История",spinAndWin:"Крути колесо и пробуй удачу!",footerHint:"💜 Чем ниже шанс — тем выше множитель",resetProgress:"🗑 Сбросить прогресс",play:"ИГРАТЬ",flappyHint:"Тапай чтобы летать.<br><b>1 очко = 200 монет</b>",WIN:"ПОБЕДА",LOSE:"ПОРАЖЕНИЕ",GAMEOVER:"💀 ИГРА ОКОНЧЕНА",EARNED:"Заработано",POINTS:"Очки",START:"НАЧАТЬ",CASH:"ЗАБРАТЬ",minesLabel:"Мины:",opened:"Открыто",towerLevel:"Уровень",BUST:"Проигрыш",noGames:"Пока нет игр",bonusMsg:"💜 Не волнуйся, не все потеряно!",prestigeNeed:"Нужно 1M на балансе",prestigeConfirm:"Сбросить баланс и статистику, но получить +5% к множителю навсегда?",prestigeDone:"Престиж",notEnough:"Недостаточно средств",badBet:"Некорректная ставка",wrongCode:"Неверный код",accessGranted:"Доступ разрешён",loggedOut:"Вы вышли из админки",balanceSet:"Баланс установлен",statsReset:"Статистика сброшена",resetAll:"Сбросить весь прогресс?",resetDone:"Прогресс сброшен",chooseBet:"Выбирай ставку и шанс",boom:"Взрыв!",adminLocked:"Слайдер заблокирован (админ-режим)"},
+  uk:{admin:"Адмін-панель",adminCode:"Введи код доступу",login:"Увійти",accessOk:"Доступ дозволено",adminWinChance:"🎯 Відсоток перемоги:",chance:"Шанс",mode:"Режим",setBalance:"📌 Встановити баланс:",addBalance:"➕ Поповнити:",zeroBalance:"Обнулити баланс",resetStats:"Скинути статистику",logout:"Вийти",close:"Закрити",profile:"👤 ПРОФІЛЬ",winRate:"Відсоток перемог",record:"Особистий рекорд",games:"Всього ігор",wl:"Перемог / поразок",profit:"Загальний прибуток",prestige:"Престиж",minigames:"🎮 МІНІ-ІГРИ",flappyDesc:"1 очко = 200 монет",minesName:"МІНИ",minesDesc:"Поле 5×5 · вибір мін 3/5/10",towerName:"ВЕЖА",towerDesc:"9 рівнів · 5 дверей",settings:"⚙️ НАЛАШТУВАННЯ",language:"🌐 Мова",theme:"🎨 Тема",purple:"Фіолетова",blue:"Синя",green:"Зелена",red:"Червона",gold:"Золота",pink:"Рожева",cyan:"Бірюзова",orange:"Помаранчева",balance:"Баланс",betAndChance:"🎯 Ставка та шанс",winChance:"Шанс виграшу",multiplier:"Множник",win:"Виграш",lose:"Програш",spin:"🎰 КРУТИТИ",prestigeBtn:"🔥 ПРЕСТИЖ",history:"📜 Історія",spinAndWin:"Крути колесо та випробовуй удачу!",footerHint:"💜 Чим нижчий шанс — тим вищий множник",resetProgress:"🗑 Скинути прогрес",play:"ГРАТИ",flappyHint:"Тапай щоб літати.<br><b>1 очко = 200 монет</b>",WIN:"ПЕРЕМОГА",LOSE:"ПОРАЗКА",GAMEOVER:"💀 ГРА ЗАКІНЧЕНА",EARNED:"Зароблено",POINTS:"Очки",START:"ПОЧАТИ",CASH:"ЗАБРАТИ",minesLabel:"Міни:",opened:"Відкрито",towerLevel:"Рівень",BUST:"Поразка",noGames:"Поки немає ігор",bonusMsg:"💜 Не хвилюйся, не все втрачено!",prestigeNeed:"Потрібно 1M",prestigeConfirm:"Скинути все заради +5% множника?",prestigeDone:"Престиж",notEnough:"Недостатньо коштів",badBet:"Некоректна ставка",wrongCode:"Невірний код",accessGranted:"Доступ дозволено",loggedOut:"Ви вийшли",balanceSet:"Баланс встановлено",statsReset:"Статистику скинуто",resetAll:"Скинути весь прогрес?",resetDone:"Прогрес скинуто",chooseBet:"Вибирай ставку та шанс",boom:"Вибух!",adminLocked:"Слайдер заблоковано"},
+  en:{admin:"Admin panel",adminCode:"Enter access code",login:"Login",accessOk:"Access granted",adminWinChance:"🎯 Win chance:",chance:"Chance",mode:"Mode",setBalance:"📌 Set balance:",addBalance:"➕ Add:",zeroBalance:"Reset balance",resetStats:"Reset stats",logout:"Logout",close:"Close",profile:"👤 PROFILE",winRate:"Win rate",record:"Personal best",games:"Total games",wl:"Wins / losses",profit:"Total profit",prestige:"Prestige",minigames:"🎮 MINIGAMES",flappyDesc:"1 point = 200 coins",minesName:"MINES",minesDesc:"5×5 field · mines 3/5/10",towerName:"TOWER",towerDesc:"9 levels · 5 doors",settings:"⚙️ SETTINGS",language:"🌐 Language",theme:"🎨 Theme",purple:"Purple",blue:"Blue",green:"Green",red:"Red",gold:"Gold",pink:"Pink",cyan:"Cyan",orange:"Orange",balance:"Balance",betAndChance:"🎯 Bet & chance",winChance:"Win chance",multiplier:"Multiplier",win:"Win",lose:"Loss",spin:"🎰 SPIN",prestigeBtn:"🔥 PRESTIGE",history:"📜 History",spinAndWin:"Spin the wheel!",footerHint:"💜 Lower chance — higher multiplier",resetProgress:"🗑 Reset progress",play:"PLAY",flappyHint:"Tap to fly.<br><b>1 point = 200 coins</b>",WIN:"WIN",LOSE:"LOSE",GAMEOVER:"💀 GAME OVER",EARNED:"Earned",POINTS:"Points",START:"START",CASH:"CASH OUT",minesLabel:"Mines:",opened:"Opened",towerLevel:"Level",BUST:"BUST",noGames:"No games yet",bonusMsg:"💜 Don't worry, you're not done!",prestigeNeed:"Need 1M",prestigeConfirm:"Reset everything for +5% multiplier?",prestigeDone:"Prestige",notEnough:"Not enough funds",badBet:"Invalid bet",wrongCode:"Wrong code",accessGranted:"Access granted",loggedOut:"You left admin",balanceSet:"Balance set",statsReset:"Stats reset",resetAll:"Reset ALL progress?",resetDone:"Progress reset",chooseBet:"Choose bet and chance",boom:"Boom!",adminLocked:"Slider locked (admin mode)"}
 };
 function t(k){return (I18N[state.lang]&&I18N[state.lang][k])||I18N.ru[k]||k}
 
@@ -579,7 +578,7 @@ function applyLang(lang){
   updateProfileStats();updateHistory();updatePrestigeBadge();updatePreview();
 }
 
-const SAVE_KEY='upgrader_v14';
+const SAVE_KEY='upgrader_v15';
 const HOUSE_EDGE=0.03;
 const ADMIN_CODE='IvanAdmin0610';
 const BONUS_AMOUNT=1000;
@@ -713,8 +712,9 @@ function drawWheel(chance){
   }
   $centerText.textContent=chance+'%';
 }
+// Колесо ВСЕГДА по игровому слайдеру — админ-шанс только влияет на исход
 function visualChance(){
-  return (isAdmin&&state.adminChanceOn)?state.adminChance:parseInt($chanceSlider.value);
+  return parseInt($chanceSlider.value);
 }
 function updatePreview(){
   const bet=parseBet($betInput.value)||0;
@@ -727,7 +727,7 @@ function updatePreview(){
   $previewLose.textContent=fmt(bet);
   $chanceSlider.style.setProperty('--pos',((chance-1)/94*100)+'%');
   state.lastBet=bet;state.lastChance=chance;
-  drawWheel(visualChance());
+  drawWheel(chance);
 }
 function toast(msg){
   const t2=document.createElement('div');t2.className='toast';t2.textContent=msg;
@@ -741,6 +741,7 @@ function checkBonus(){
     addFeed('info',t('bonusMsg'),'+'+fmt(BONUS_AMOUNT));
   }
 }
+// Стрелка летит по ИГРОВОМУ шансу (visual)
 function spinArrow(win,chance){
   const winStart=-90;
   const winEnd=-90+chance/100*360;
@@ -749,7 +750,7 @@ function spinArrow(win,chance){
   let target;
   if(chance<=0){target=90}
   else if(win){
-    if(chance>=100){target=winStart+Math.random()*359}
+    if(chance>=100){target=winStart+180}
     else{const range=winEnd-winStart,pad=range*0.08;target=winStart+pad+Math.random()*(range-pad*2)}
   }else{
     const range=loseEnd-loseStart,pad=range>20?range*0.05:1;
@@ -791,11 +792,12 @@ async function play(){
   spinning=true;$actionBtn.disabled=true;$chanceSlider.disabled=true;
   $resultDisplay.className='result-display';
   $resultMain.textContent='🎰';$resultSub.textContent='...';
-  const vc=visualChance();
+  // Исход — по админ-шансу (если включён), иначе по игровому
   const realChance=(isAdmin&&state.adminChanceOn)?state.adminChance:chance;
   const win=Math.random()*100<realChance;
   state.balance-=bet;updateBalance();sndSpinStart();
-  await spinArrow(win,vc);
+  // Стрелка летит по ИГРОВОМУ шансу (visualChance = слайдер игрока)
+  await spinArrow(win,chance);
   state.games++;
   if(win){
     const winAmount=Math.floor(bet*mult),profit=winAmount-bet;
@@ -821,7 +823,10 @@ async function play(){
   }
   if(state.history.length>10)state.history=state.history.slice(-10);
   updateHistory();
-  spinning=false;$actionBtn.disabled=false;$chanceSlider.disabled=false;
+  spinning=false;
+  $actionBtn.disabled=false;
+  // Слайдер разблокируем только если админ-шанс выключен
+  $chanceSlider.disabled=(isAdmin&&state.adminChanceOn);
   save();checkBonus();
 }
 
@@ -872,6 +877,7 @@ $('adminLogout').addEventListener('click',()=>{
   isAdmin=false;adminLocked=false;localStorage.removeItem('upgrader_adminLocked');
   $adminLogin.style.display='block';$adminContent.style.display='none';
   $adminPanel.classList.remove('show');$adminBtn.classList.remove('active');
+  $chanceSlider.disabled=false;
   toast('🚪 '+t('loggedOut'));updatePreview();
 });
 $('adminAdd').addEventListener('click',()=>{
@@ -903,12 +909,16 @@ function refreshAdminChance(){
 $adminChance.addEventListener('input',()=>{
   state.adminChance=parseInt($adminChance.value);
   $adminChanceVal.textContent=state.adminChance+'%';
-  save();updatePreview();
+  save();
+  // Колесо НЕ перерисовываем — оно всегда по игровому слайдеру
 });
 $adminChanceToggle.addEventListener('click',()=>{
   state.adminChanceOn=!state.adminChanceOn;
   refreshAdminChance();save();updatePreview();
-  toast(state.adminChanceOn?'✅ '+t('chance')+' '+state.adminChance+'% ON':'OFF');
+  // При включении — блокируем слайдер
+  $chanceSlider.disabled=state.adminChanceOn;
+  if(state.adminChanceOn)toast('✅ '+t('chance')+' '+state.adminChance+'% ON · '+t('adminLocked'));
+  else toast('OFF');
 });
 
 $('profileBtn').addEventListener('click',()=>{updateProfileStats();$profilePage.classList.add('show');sndClick()});
@@ -1316,6 +1326,8 @@ $betInput.value=state.lastBet;
 $chanceSlider.value=state.lastChance;
 drawTicks();updateBalance();updatePreview();updateProfileStats();updateSoundBtn();applyAdminState();refreshAdminChance();
 updateHistory();updatePrestigeBadge();
+// Если админ-шанс был включён — блокируем слайдер
+if(isAdmin&&state.adminChanceOn)$chanceSlider.disabled=true;
 addFeed('info','🎮 '+t('chooseBet'),'');
 checkBonus();
 document.body.addEventListener('touchstart',initAudio,{once:true});
@@ -1323,4 +1335,3 @@ document.body.addEventListener('click',initAudio,{once:true});
 </script>
 </body>
 </html>
-```
