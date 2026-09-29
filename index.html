@@ -10,32 +10,26 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:radial-gradient(circle at 50% 0%,#2a1a4e 0%,#150a2e 50%,#0a0515 100%);color:#e9d5ff;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:16px;overflow-x:hidden}
-
 .admin-btn{position:fixed;top:12px;right:12px;z-index:1000;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7c3aed,#9333ea);border:2px solid #c084fc;border-radius:12px;cursor:pointer;transition:all .2s;box-shadow:0 0 20px rgba(192,132,252,.8);padding:0}
 .admin-btn:hover{transform:scale(1.08)}
 .admin-btn.active{background:linear-gradient(135deg,#a855f7,#c084fc)}
-.sound-btn{position:fixed;top:12px;right:70px;z-index:1000;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#4c1d95,#3b1578);border:2px solid #8b5cf6;border-radius:12px;cursor:pointer;transition:all .2s;box-shadow:0 0 14px rgba(139,92,246,.6);padding:0;color:#e9d5ff;font-size:20px}
+.sound-btn{position:fixed;top:12px;right:70px;z-index:1000;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#4c1d95,#3b1578);border:2px solid #8b5cf6;border-radius:12px;cursor:pointer;transition:all .2s;padding:0;color:#e9d5ff;font-size:20px}
 .sound-btn.off{opacity:.55}
-
 .game{width:100%;max-width:560px;padding-bottom:120px}
 h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradient(90deg,#c084fc,#a855f7,#7c3aed,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 14px rgba(168,85,247,.6));letter-spacing:2px}
-
-.prestige-badge{text-align:center;font-size:12px;color:#fcd34d;font-weight:800;letter-spacing:2px;margin-bottom:6px;text-shadow:0 0 12px rgba(252,211,77,.8)}
-
+.prestige-badge{text-align:center;font-size:12px;color:#fcd34d;font-weight:800;letter-spacing:2px;margin-bottom:6px}
 .balance-box{text-align:center;padding:12px;background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(124,58,237,.1));border:1px solid rgba(168,85,247,.4);border-radius:16px;margin-bottom:10px;position:relative;overflow:hidden}
 .balance-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(192,132,252,.25),transparent 30%);animation:spin 5s linear infinite;pointer-events:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 .balance-label{font-size:11px;color:#c084fc;letter-spacing:3px;text-transform:uppercase;position:relative}
 .balance{font-size:30px;font-weight:800;color:#e9d5ff;text-shadow:0 0 24px rgba(192,132,252,.9);margin:2px 0;position:relative;transition:transform .12s;word-break:break-all;font-variant-numeric:tabular-nums}
 .balance.pop{transform:scale(1.1)}
-
 .history-strip{display:flex;gap:4px;justify-content:center;margin-bottom:12px;padding:6px;background:rgba(20,10,40,.5);border-radius:10px;border:1px solid rgba(168,85,247,.25);min-height:26px;align-items:center;overflow-x:auto}
 .history-strip::-webkit-scrollbar{display:none}
 .history-dot{width:14px;height:14px;border-radius:5px;flex-shrink:0;background:rgba(60,35,100,.7);border:1px solid rgba(168,85,247,.4);transition:all .2s}
 .history-dot.win{background:linear-gradient(135deg,#c084fc,#7c3aed);border-color:#e9d5ff;box-shadow:0 0 8px rgba(192,132,252,.9)}
 .history-dot.lose{background:linear-gradient(135deg,#2e1065,#1a0d33);border-color:rgba(120,80,180,.5)}
 .history-empty{font-size:11px;color:#6b21a8;font-style:italic}
-
 .wheel-stage{position:relative;width:100%;max-width:340px;margin:10px auto 14px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
 .wheel-svg{width:100%;height:100%;filter:drop-shadow(0 0 30px rgba(124,58,237,.6))}
 .wheel-seg-win{fill:url(#gradWin);stroke:rgba(233,213,255,.6);stroke-width:0.8}
@@ -51,7 +45,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .wheel-arrow-body{position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:3px;background:linear-gradient(90deg,rgba(192,132,252,0),#c084fc 60%,#e9d5ff);border-radius:2px}
 .wheel-arrow-tip{position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:0;height:0;border:14px solid transparent;border-left-color:#e9d5ff;filter:drop-shadow(0 0 12px rgba(192,132,252,1))}
 .wheel-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e9d5ff,#c084fc 40%,#7c3aed 80%);box-shadow:0 0 20px rgba(192,132,252,1);z-index:6;border:2px solid #e9d5ff}
-
 .result-display{text-align:center;padding:12px;background:rgba(20,10,40,.6);border-radius:14px;margin-bottom:12px;border:1px solid rgba(168,85,247,.3);min-height:70px;display:flex;flex-direction:column;justify-content:center;gap:2px}
 .result-display.win{background:linear-gradient(135deg,rgba(168,85,247,.35),rgba(124,58,237,.15));border-color:#c084fc}
 .result-display.lose{background:linear-gradient(135deg,rgba(90,60,140,.4),rgba(60,35,100,.2));border-color:#8b5cf6}
@@ -59,7 +52,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .result-display.win .result-main{color:#d8b4fe;text-shadow:0 0 24px rgba(216,180,254,1)}
 .result-display.lose .result-main{color:#a78bfa}
 .result-sub{font-size:12px;color:#c4b5fd;font-weight:600;min-height:14px}
-
 .panel{background:linear-gradient(135deg,rgba(168,85,247,.1),rgba(124,58,237,.05));border:1px solid rgba(168,85,247,.35);border-radius:16px;padding:14px;margin-bottom:12px}
 .panel-title{font-size:11px;letter-spacing:3px;color:#c084fc;text-transform:uppercase;margin-bottom:10px;text-align:center;font-weight:700}
 .bet-row{display:flex;gap:8px;margin-bottom:10px}
@@ -70,7 +62,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .bet-quick{display:flex;gap:6px;margin-bottom:14px}
 .bet-quick button{flex:1;background:rgba(124,58,237,.15);border:1px solid rgba(168,85,247,.35);color:#c084fc;padding:6px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700}
 .bet-quick button:hover{background:rgba(168,85,247,.35);color:#e9d5ff}
-
 .chance-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .chance-header span:first-child{font-size:11px;letter-spacing:2px;color:#a855f7;text-transform:uppercase;font-weight:700}
 .chance-header span:last-child{font-size:18px;font-weight:900;color:#c084fc}
@@ -79,7 +70,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .chance-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:40px;border-radius:8px;background:linear-gradient(180deg,#e9d5ff,#c084fc,#7c3aed);border:2px solid #fff;cursor:grab;margin-top:-5px;box-shadow:0 0 16px rgba(192,132,252,1)}
 .chance-slider::-moz-range-thumb{width:22px;height:40px;border-radius:8px;background:#c084fc;border:2px solid #fff;cursor:grab}
 .chance-slider:disabled{opacity:.45;cursor:not-allowed}
-
 .payout-preview{display:flex;justify-content:space-between;gap:8px;margin-bottom:14px;text-align:center}
 .payout-cell{flex:1;background:rgba(20,10,40,.6);border:1px solid rgba(168,85,247,.3);border-radius:10px;padding:8px 4px}
 .payout-cell .lbl{font-size:10px;color:#a855f7;letter-spacing:1px;text-transform:uppercase;font-weight:700}
@@ -87,13 +77,11 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .payout-cell.mult-cell .v{color:#d8b4fe}
 .payout-cell.win-cell .v{color:#c084fc}
 .payout-cell.lose-cell .v{color:#8b5cf6}
-
 .btn-main{width:100%;padding:16px;font-size:17px;font-weight:800;color:#e9d5ff;border:2px solid rgba(147,51,234,.5);border-radius:14px;cursor:pointer;margin-bottom:8px;transition:all .15s;letter-spacing:2px;background:linear-gradient(135deg,#4c1d95,#3b1578,#2e1065)}
 .btn-main:hover:not(:disabled){background:linear-gradient(135deg,#5b21b6,#4c1d95,#3b1578)}
 .btn-main:active:not(:disabled){transform:scale(.97)}
 .btn-main:disabled{opacity:.4;cursor:not-allowed}
 .btn-prestige{background:linear-gradient(135deg,#7c3aed,#a855f7);border-color:#e9d5ff;color:#fff}
-
 .feed-title{font-size:11px;letter-spacing:3px;color:#a855f7;text-transform:uppercase;margin:14px 4px 8px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
 .feed-title span:last-child{color:#7c3aed;font-size:10px}
 .feed{height:150px;overflow-y:auto;background:rgba(20,10,40,.6);border:1px solid rgba(168,85,247,.35);border-radius:14px;padding:8px}
@@ -106,13 +94,10 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .feed-item.admin{background:linear-gradient(90deg,rgba(192,132,252,.3),rgba(192,132,252,.08));border-left-color:#c084fc;color:#e9d5ff}
 .feed-item .val{font-weight:800;font-size:14px}
 .feed-empty{text-align:center;color:#6b21a8;font-size:12px;padding:30px 10px;font-style:italic}
-
 .footer{text-align:center;font-size:11px;color:#6b21a8;margin-top:20px}
 .footer button{background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.4);color:#c084fc;padding:8px 18px;border-radius:10px;cursor:pointer;font-size:12px;margin-top:10px;font-weight:600}
-
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(120px);background:linear-gradient(135deg,#a855f7,#7c3aed);color:#e9d5ff;padding:12px 24px;border-radius:12px;font-weight:700;font-size:14px;transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:3000;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0)}
-
 .modal-overlay{position:fixed;inset:0;background:rgba(5,2,10,.75);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
 .modal-overlay.show{opacity:1;pointer-events:auto}
 .modal{background:linear-gradient(160deg,#2a1a4e 0%,#1a0f33 60%,#0f0820 100%);border:2px solid #c084fc;border-radius:20px;padding:28px 24px;max-width:340px;width:100%;text-align:center;transform:scale(.85) translateY(20px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
@@ -126,7 +111,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .modal.lose .modal-amount{color:#a78bfa}
 .modal-sub{font-size:13px;color:#c4b5fd;margin-bottom:18px;font-weight:600}
 .modal-close{background:linear-gradient(135deg,#7c3aed,#9333ea);border:2px solid #c084fc;color:#e9d5ff;padding:12px 32px;border-radius:12px;cursor:pointer;font-weight:800;font-size:14px;letter-spacing:2px;text-transform:uppercase}
-
 .admin-panel{position:fixed;top:64px;right:12px;width:300px;max-width:calc(100vw - 24px);max-height:calc(100vh - 90px);overflow-y:auto;background:rgba(20,10,40,.98);border:2px solid rgba(168,85,247,.6);border-radius:14px;padding:16px;z-index:999;transform:translateY(-20px) scale(.95);opacity:0;pointer-events:none;transition:all .25s}
 .admin-panel.show{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
 .admin-panel h3{font-size:13px;color:#e9d5ff;text-align:center;margin-bottom:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800}
@@ -153,7 +137,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .admin-panel .slider-row input[type=range]{width:100%;height:24px;margin:0;padding:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer;border:none}
 .admin-panel .slider-row input[type=range]::-webkit-slider-runnable-track{height:24px;border-radius:8px;background:linear-gradient(90deg,#3b1578,#7c3aed,#c084fc)}
 .admin-panel .slider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:30px;border-radius:6px;background:linear-gradient(180deg,#e9d5ff,#c084fc,#7c3aed);border:2px solid #fff;margin-top:-4px}
-
 .profile-page,.games-page,.minigame-page{position:fixed;inset:0;background:radial-gradient(circle at 50% 0%,#2a1a4e 0%,#150a2e 50%,#0a0515 100%);padding:20px;overflow-y:auto;transition:transform .35s cubic-bezier(.34,1.2,.64,1)}
 .profile-page{z-index:1500;transform:translateX(100%)}
 .profile-page.show{transform:translateX(0)}
@@ -161,12 +144,9 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .games-page.show{transform:translateY(0)}
 .minigame-page{z-index:1600;transform:translateY(100%);display:flex;flex-direction:column;padding:16px}
 .minigame-page.show{transform:translateY(0)}
-
 .page-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
 .back-btn{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#4c1d95,#3b1578);border:2px solid #8b5cf6;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#e9d5ff;font-size:22px;font-weight:900;padding:0;flex-shrink:0}
-.back-btn:hover{transform:scale(1.05)}
 .page-title{font-size:20px;font-weight:900;color:#e9d5ff;letter-spacing:2px}
-
 .profile-stats{display:flex;flex-direction:column;gap:12px;max-width:560px;margin:0 auto}
 .stat-card{background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(124,58,237,.08));border:1px solid rgba(168,85,247,.4);border-radius:16px;padding:18px 16px;display:flex;align-items:center;gap:14px}
 .stat-icon{font-size:30px}
@@ -175,20 +155,17 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .stat-value{font-size:22px;font-weight:900;color:#e9d5ff;font-variant-numeric:tabular-nums;word-break:break-all}
 .stat-value.gold{color:#fcd34d}
 .stat-value.pct{color:#d8b4fe}
-
 .games-list{display:flex;flex-direction:column;gap:12px;max-width:560px;margin:0 auto}
 .game-card{background:linear-gradient(135deg,rgba(168,85,247,.2),rgba(124,58,237,.1));border:2px solid rgba(168,85,247,.5);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .2s}
-.game-card:hover{background:linear-gradient(135deg,rgba(192,132,252,.35),rgba(147,51,234,.2));transform:translateX(6px);box-shadow:0 0 24px rgba(168,85,247,.5)}
+.game-card:hover{background:linear-gradient(135deg,rgba(192,132,252,.35),rgba(147,51,234,.2));transform:translateX(6px)}
 .game-card .icon{font-size:38px}
 .game-card .info{flex:1}
 .game-card .name{font-size:17px;font-weight:900;color:#e9d5ff;margin-bottom:3px}
 .game-card .desc{font-size:12px;color:#c4b5fd;font-weight:600}
-
 .bottom-bar{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:900;display:flex;gap:12px;align-items:center}
-.profile-btn,.game-btn{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#4c1d95,#3b1578,#2e1065);border:2px solid rgba(147,51,234,.7);cursor:pointer;transition:all .2s;box-shadow:0 8px 24px rgba(76,29,149,.6);padding:0;display:flex;align-items:center;justify-content:center;color:#e9d5ff}
+.profile-btn,.game-btn{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#4c1d95,#3b1578,#2e1065);border:2px solid rgba(147,51,234,.7);cursor:pointer;transition:all .2s;padding:0;display:flex;align-items:center;justify-content:center;color:#e9d5ff}
 .profile-btn:hover,.game-btn:hover{background:linear-gradient(135deg,#5b21b6,#4c1d95,#3b1578);transform:translateY(-2px)}
 .profile-btn svg,.game-btn svg{width:32px;height:32px;filter:drop-shadow(0 0 8px rgba(192,132,252,.9))}
-
 .minigame-canvas-wrap{position:relative;flex:1;max-width:560px;width:100%;margin:0 auto;border-radius:16px;overflow:hidden;border:2px solid rgba(168,85,247,.5);background:#0a0515;min-height:400px}
 #gameCanvas{display:block;width:100%;height:100%;touch-action:none}
 .mg-hud{position:absolute;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;pointer-events:none;font-weight:900;z-index:5}
@@ -196,10 +173,9 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .mg-coins{color:#fcd34d}
 .mg-overlay{position:absolute;inset:0;background:rgba(5,2,10,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;z-index:10}
 .mg-overlay.hidden{display:none}
-.mg-overlay h2{font-size:22px;color:#d8b4fe;font-weight:900;letter-spacing:2px}
+.mg-overlay h2{font-size:22px;color:#d8b4fe;font-weight:900}
 .mg-overlay p{font-size:13px;color:#c4b5fd;max-width:280px;line-height:1.5}
 .mg-play-btn{background:linear-gradient(135deg,#7c3aed,#9333ea);border:2px solid #c084fc;color:#e9d5ff;padding:14px 36px;border-radius:14px;cursor:pointer;font-weight:800;font-size:15px;letter-spacing:2px;text-transform:uppercase}
-
 .mines-wrap,.tower-wrap{max-width:560px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:14px;flex:1}
 .mines-controls{background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(124,58,237,.08));border:1px solid rgba(168,85,247,.4);border-radius:14px;padding:14px}
 .mines-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
@@ -224,11 +200,8 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .mines-actions{display:flex;gap:10px;margin-top:6px}
 .mines-actions button{flex:1;padding:14px;border-radius:14px;font-weight:800;font-size:14px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:2px solid;transition:all .15s}
 .mines-actions .start{background:linear-gradient(135deg,#4c1d95,#3b1578);color:#e9d5ff;border-color:rgba(147,51,234,.6)}
-.mines-actions .start:hover:not(:disabled){background:linear-gradient(135deg,#5b21b6,#4c1d95)}
 .mines-actions .cash{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border-color:#e9d5ff}
-.mines-actions .cash:hover:not(:disabled){background:linear-gradient(135deg,#9333ea,#c084fc)}
 .mines-actions button:disabled{opacity:.4;cursor:not-allowed}
-
 .tower-level{background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(60,35,100,.1));border:2px solid rgba(168,85,247,.4);border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .tower-level.active{border-color:#c084fc;background:linear-gradient(135deg,rgba(168,85,247,.3),rgba(124,58,237,.15));box-shadow:0 0 20px rgba(192,132,252,.5)}
 .tower-level.done{opacity:.5;border-color:rgba(120,80,180,.3)}
@@ -243,7 +216,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .tower-stack{display:flex;flex-direction:column-reverse;gap:8px;margin-top:8px;max-height:400px;overflow-y:auto;padding-right:4px}
 .tower-stack::-webkit-scrollbar{width:6px}
 .tower-stack::-webkit-scrollbar-thumb{background:#7c3aed;border-radius:6px}
-
 #particles{position:fixed;inset:0;pointer-events:none;z-index:2500;overflow:hidden}
 .particle{position:absolute;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#e9d5ff,#c084fc 50%,#7c3aed);box-shadow:0 0 12px rgba(192,132,252,1);pointer-events:none;will-change:transform,opacity}
 </style>
@@ -251,9 +223,7 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 <body>
 
 <div id="particles"></div>
-
 <button class="sound-btn" id="soundBtn">🔊</button>
-
 <button class="admin-btn" id="adminBtn" aria-label="Админ-панель">
   <svg viewBox="0 0 32 32" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -278,7 +248,7 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
   </div>
   <div id="adminContent" style="display:none">
     <div class="status on">✅ Доступ разрешён</div>
-    <div class="hint left">🎯 Процент победы:</div>
+    <div class="hint left">🎯 Процент победы (работает везде):</div>
     <div class="slider-row">
       <div class="lbl"><span>Шанс</span><span id="adminChanceVal">50%</span></div>
       <input type="range" id="adminChance" min="0" max="100" value="50" step="1">
@@ -378,14 +348,11 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 <div class="game">
   <h1>💰 UPGRADER</h1>
   <div class="prestige-badge" id="prestigeBadge" style="display:none">🔥 ПРЕСТИЖ ×N</div>
-
   <div class="balance-box">
     <div class="balance-label">Баланс</div>
     <div class="balance" id="balance">0</div>
   </div>
-
   <div class="history-strip" id="historyStrip"></div>
-
   <div class="wheel-stage">
     <div class="wheel-hub"></div>
     <div class="wheel-arrow" id="wheelArrow">
@@ -416,12 +383,10 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
       <text class="wheel-center-sub" id="centerSub" x="100" y="110">CHANCE</text>
     </svg>
   </div>
-
   <div class="result-display" id="resultDisplay">
     <div class="result-main" id="resultMain">🎯</div>
     <div class="result-sub" id="resultSub">Ставь и крути</div>
   </div>
-
   <div class="panel">
     <div class="panel-title">🎯 Ставка и шанс</div>
     <div class="bet-row">
@@ -443,10 +408,8 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
     <button class="btn-main" id="actionBtn">🎰 КРУТИТЬ</button>
     <button class="btn-main btn-prestige" id="prestigeBtn">🔥 ПРЕСТИЖ</button>
   </div>
-
   <div class="feed-title"><span>📜 История</span><span id="feedCount">0</span></div>
   <div class="feed" id="feed"><div class="feed-empty">Крути колесо и пробуй удачу!</div></div>
-
   <div class="footer">
     <div>💜 Чем ниже шанс — тем выше множитель</div>
     <button id="resetBtn">🗑 Сбросить прогресс</button>
@@ -495,14 +458,13 @@ function parseBet(str){
 }
 
 /* ============ НАСТРОЙКИ ============ */
-const SAVE_KEY='upgrader_v11';
+const SAVE_KEY='upgrader_v12';
 const HOUSE_EDGE=0.03;
 const ADMIN_CODE='IvanAdmin0610';
 const BONUS_AMOUNT=1000;
 const COIN_PER_POINT=200;
 const PRESTIGE_BONUS_PER=0.05;
 
-/* ============ СОСТОЯНИЕ ============ */
 let state={
   balance:1000,lastBet:100,lastChance:50,
   games:0,wins:0,losses:0,record:0,profit:0,
@@ -636,11 +598,19 @@ function drawWheel(chance){
   if(chance>=100){
     $segWin.setAttribute('d',`M 100 100 m -85 0 a 85 85 0 1 0 170 0 a 85 85 0 1 0 -170 0`);
     $segLose.setAttribute('d','');
+  }else if(chance<=0){
+    $segWin.setAttribute('d','');
+    $segLose.setAttribute('d',`M 100 100 m -85 0 a 85 85 0 1 0 170 0 a 85 85 0 1 0 -170 0`);
   }else{
     $segWin.setAttribute('d',arcPath(100,100,R,start,winEnd));
     $segLose.setAttribute('d',arcPath(100,100,R,winEnd,loseEnd));
   }
   $centerText.textContent=chance+'%';
+}
+// Возвращает текущий визуальный шанс (учитывая админ-режим)
+function getVisualChance(){
+  const chance=parseInt($chanceSlider.value);
+  return (isAdmin&&state.adminChanceOn)?state.adminChance:chance;
 }
 function updatePreview(){
   const bet=parseBet($betInput.value)||0;
@@ -653,7 +623,8 @@ function updatePreview(){
   $previewLose.textContent=fmt(bet);
   $chanceSlider.style.setProperty('--pos',((chance-1)/94*100)+'%');
   state.lastBet=bet;state.lastChance=chance;
-  drawWheel(chance);
+  // Колесо рисуем по реальному (визуальному) шансу
+  drawWheel(getVisualChance());
 }
 function toast(msg){
   const t=document.createElement('div');t.className='toast';t.textContent=msg;
@@ -677,7 +648,10 @@ function spinArrow(win,chance){
   const loseEnd=-90+360;
 
   let target;
-  if(win){
+  if(chance<=0){
+    // 0% — всегда проигрыш, стрелка в прозрачной зоне
+    target=90;
+  }else if(win){
     if(chance>=100){
       // 100% — стрелка встаёт в любую точку круга (везде победа)
       target=winStart+Math.random()*359;
@@ -729,14 +703,13 @@ async function play(){
   $resultDisplay.className='result-display';
   $resultMain.textContent='🎰';$resultSub.textContent='Крутится...';
 
-  let winChance=chance;
-  if(isAdmin&&state.adminChanceOn)winChance=state.adminChance;
-  const win=Math.random()*100<winChance;
+  // Реальный шанс победы
+  const realChance=(isAdmin&&state.adminChanceOn)?state.adminChance:chance;
+  const win=Math.random()*100<realChance;
 
   state.balance-=bet;updateBalance();sndSpinStart();
-  // Стрелка всегда визуально идёт по игровому шансу (или 100%, если админ выставил 100)
-  const visualChance = (isAdmin&&state.adminChanceOn) ? state.adminChance : chance;
-  await spinArrow(win, visualChance);
+  // Стрелка идёт по тому же проценту, что и исход — попадает точно в фиолетовый/прозрачный
+  await spinArrow(win,realChance);
   state.games++;
   if(win){
     const winAmount=Math.floor(bet*mult),profit=winAmount-bet;
@@ -745,20 +718,20 @@ async function play(){
     updateBalance();
     $resultDisplay.className='result-display win';
     $resultMain.textContent='+'+fmt(profit);
-    $resultSub.textContent=`WIN ×${mult.toFixed(2)} (шанс ${chance}%)`;
-    addFeed('win',`✅ ×${mult.toFixed(2)} (${chance}%)`,'+'+fmt(profit));
+    $resultSub.textContent=`WIN ×${mult.toFixed(2)} (шанс ${realChance}%)`;
+    addFeed('win',`✅ ×${mult.toFixed(2)} (${realChance}%)`,'+'+fmt(profit));
     state.history.push('win');
     sndWin();
     if(mult>=10)burstParticles(80);
-    showResultModal(true,profit,chance,mult,bet);
+    showResultModal(true,profit,realChance,mult,bet);
   }else{
     state.losses++;state.profit-=bet;
     $resultDisplay.className='result-display lose';
     $resultMain.textContent='-'+fmt(bet);
-    $resultSub.textContent=`BUST (шанс ${chance}%)`;
-    addFeed('lose',`💀 Проигрыш (${chance}%)`,'-'+fmt(bet));
+    $resultSub.textContent=`BUST (шанс ${realChance}%)`;
+    addFeed('lose',`💀 Проигрыш (${realChance}%)`,'-'+fmt(bet));
     state.history.push('lose');
-    sndLose();showResultModal(false,bet,chance,mult,bet);
+    sndLose();showResultModal(false,bet,realChance,mult,bet);
   }
   if(state.history.length>10)state.history=state.history.slice(-10);
   updateHistory();
@@ -801,6 +774,7 @@ $('adminLoginBtn').addEventListener('click',()=>{
     isAdmin=true;adminLocked=true;localStorage.setItem('upgrader_adminLocked','1');
     $adminLogin.style.display='none';$adminContent.style.display='block';$adminCode.value='';
     sndClick();toast('✅ Доступ разрешён');
+    updatePreview();
   }else{toast('❌ Неверный код');$adminCode.value=''}
 });
 $adminCode.addEventListener('keydown',(e)=>{if(e.key==='Enter')$('adminLoginBtn').click()});
@@ -809,6 +783,7 @@ $('adminLogout').addEventListener('click',()=>{
   $adminLogin.style.display='block';$adminContent.style.display='none';
   $adminPanel.classList.remove('show');$adminBtn.classList.remove('active');
   toast('🚪 Вы вышли');
+  updatePreview();
 });
 $('adminAdd').addEventListener('click',()=>{
   if(!isAdmin)return;
@@ -836,8 +811,19 @@ function refreshAdminChance(){
   if(state.adminChanceOn){$adminChanceToggle.classList.remove('off');$adminChanceToggle.classList.add('on');$adminChanceToggle.textContent='ON'}
   else{$adminChanceToggle.classList.add('off');$adminChanceToggle.classList.remove('on');$adminChanceToggle.textContent='OFF'}
 }
-$adminChance.addEventListener('input',()=>{state.adminChance=parseInt($adminChance.value);$adminChanceVal.textContent=state.adminChance+'%';save()});
-$adminChanceToggle.addEventListener('click',()=>{state.adminChanceOn=!state.adminChanceOn;refreshAdminChance();save();toast(state.adminChanceOn?'✅ Админ-шанс '+state.adminChance+'% ВКЛ':'Админ-шанс ВЫКЛ')});
+$adminChance.addEventListener('input',()=>{
+  state.adminChance=parseInt($adminChance.value);
+  $adminChanceVal.textContent=state.adminChance+'%';
+  save();
+  updatePreview();
+});
+$adminChanceToggle.addEventListener('click',()=>{
+  state.adminChanceOn=!state.adminChanceOn;
+  refreshAdminChance();
+  save();
+  updatePreview();
+  toast(state.adminChanceOn?'✅ Админ-шанс '+state.adminChance+'% ВКЛ':'Админ-шанс ВЫКЛ');
+});
 
 /* ============ ПРОФИЛЬ / СТРАНИЦЫ ============ */
 $('profileBtn').addEventListener('click',()=>{updateProfileStats();$profilePage.classList.add('show');sndClick()});
@@ -919,10 +905,28 @@ function mgLoop(){
     ctx.fillStyle='#7c3aed';ctx.strokeStyle='#c084fc';ctx.lineWidth=2;
     ctx.fillRect(p.x,0,PIPE_W,p.top);ctx.strokeRect(p.x,0,PIPE_W,p.top);
     ctx.fillRect(p.x,p.top+PIPE_GAP,PIPE_W,H-p.top-PIPE_GAP);ctx.strokeRect(p.x,p.top+PIPE_GAP,PIPE_W,H-p.top-PIPE_GAP);
-    if(bird.x+bird.r>p.x&&bird.x-bird.r<p.x+PIPE_W){if(bird.y-bird.r<p.top||bird.y+bird.r>p.top+PIPE_GAP)return mgGameOver()}
+    if(bird.x+bird.r>p.x&&bird.x-bird.r<p.x+PIPE_W){
+      if(bird.y-bird.r<p.top||bird.y+bird.r>p.top+PIPE_GAP){
+        // Админ-шанс: спасаем птичку
+        if(isAdmin&&state.adminChanceOn&&Math.random()*100<state.adminChance){
+          bird.y=Math.min(Math.max(bird.y,p.top+bird.r+2),p.top+PIPE_GAP-bird.r-2);
+          bird.vy=0;
+        }else{
+          return mgGameOver();
+        }
+      }
+    }
     if(p.x+PIPE_W<0)pipes.splice(i,1);
   }
-  if(bird.y-bird.r<0||bird.y+bird.r>H)return mgGameOver();
+  if(bird.y-bird.r<0||bird.y+bird.r>H){
+    // Админ-шанс: спасаем от стен
+    if(isAdmin&&state.adminChanceOn&&Math.random()*100<state.adminChance){
+      bird.y=Math.max(bird.r+1,Math.min(H-bird.r-1,bird.y));
+      bird.vy=0;
+    }else{
+      return mgGameOver();
+    }
+  }
   ctx.fillStyle='#d8b4fe';ctx.beginPath();ctx.arc(bird.x,bird.y,bird.r,0,Math.PI*2);ctx.fill();
   ctx.strokeStyle='#c084fc';ctx.lineWidth=2;ctx.stroke();
   ctx.fillStyle='#1a0d33';ctx.beginPath();ctx.arc(bird.x+4,bird.y-3,3,0,Math.PI*2);ctx.fill();
@@ -1057,7 +1061,24 @@ function clickMine(i){
   if(!minesActive)return;
   const cell=document.querySelector(`.mine-cell[data-i="${i}"]`);
   if(!cell||cell.classList.contains('revealed'))return;
-  if(minesBoard[i]==='bomb'){
+
+  let isBomb=minesBoard[i]==='bomb';
+
+  // Админ-шанс: если попал на бомбу — с шансом adminChance% переносим мину на другую ячейку
+  if(isBomb&&isAdmin&&state.adminChanceOn){
+    if(Math.random()*100<state.adminChance){
+      const safeIdx=[];
+      for(let k=0;k<25;k++){if(k!==i&&minesBoard[k]==='gem')safeIdx.push(k)}
+      if(safeIdx.length){
+        const swapIdx=safeIdx[Math.floor(Math.random()*safeIdx.length)];
+        minesBoard[swapIdx]='bomb';
+      }
+      minesBoard[i]='gem';
+      isBomb=false;
+    }
+  }
+
+  if(isBomb){
     cell.classList.add('revealed','bomb');
     cell.textContent='💥';
     minesBoard.forEach((v,j)=>{if(v==='bomb'){const c=document.querySelector(`.mine-cell[data-i="${j}"]`);if(c){c.classList.add('shown');if(!c.textContent||c.textContent==='?')c.textContent='💣'}}});
@@ -1230,7 +1251,23 @@ function clickTowerTile(lvl,col){
   const positions=[...Array(TOWER_DOORS).keys()];
   for(let i=positions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[positions[i],positions[j]]=[positions[j],positions[i]]}
   for(let k=0;k<towerMinesPerLevel;k++)mines.push(positions[k]);
-  const isBomb=mines.includes(col);
+
+  let isBomb=mines.includes(col);
+
+  // Админ-шанс: подкручиваем дверь в безопасную
+  if(isBomb&&isAdmin&&state.adminChanceOn){
+    if(Math.random()*100<state.adminChance){
+      const safeAlternatives=[];
+      for(let k=0;k<TOWER_DOORS;k++){if(k!==col&&!mines.includes(k))safeAlternatives.push(k)}
+      const bombIndex=mines.indexOf(col);
+      if(safeAlternatives.length){
+        const newBomb=safeAlternatives[Math.floor(Math.random()*safeAlternatives.length)];
+        mines[bombIndex]=newBomb;
+      }
+      isBomb=false;
+    }
+  }
+
   const row=document.querySelector(`.tower-level[data-level="${lvl}"]`);
   const tiles=row.querySelectorAll('.tower-tile');
   tiles.forEach((t,i)=>{
