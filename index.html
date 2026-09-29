@@ -396,7 +396,62 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
     </div>
   </div>
 </div>
+/* ============ СКРЫТАЯ КНОПКА ПРЕСТИЖА (добавлено) ============ */
+(function(){
+  // Невидимая кнопка — 40x40 пикселей в правом нижнем углу
+  const btn=document.createElement('div');
+  btn.id='hiddenPrestigeBtn';
+  btn.style.cssText=`
+    position:fixed;
+    bottom:0;
+    right:0;
+    width:40px;
+    height:40px;
+    z-index:9999;
+    opacity:0;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  `;
+  document.body.appendChild(btn);
 
+  // Клик по невидимой кнопке — открывает окно ввода
+  btn.addEventListener('click',()=>{
+    const input=prompt('Сколько престижа добавить? (можно минус, например -5)','1');
+    if(input===null)return;
+    const num=parseInt(input);
+    if(isNaN(num)||num===0){alert('Некорректное число');return}
+
+    if(typeof state==='undefined'){alert('Ошибка: state не найден');return}
+
+    state.prestige=Math.max(0,state.prestige+num);
+
+    if(typeof updateProfileStats==='function')updateProfileStats();
+    if(typeof updatePrestigeBadge==='function')updatePrestigeBadge();
+    if(typeof updatePreview==='function')updatePreview();
+    if(typeof save==='function')save();
+
+    if(num>0){
+      if(typeof burstParticles==='function')burstParticles(60);
+      if(typeof sndBonus==='function')sndBonus();
+      if(typeof toast==='function')toast('🔥 Престиж: '+state.prestige+' (+'+(state.prestige*5)+'%)');
+      if(typeof addFeed==='function')addFeed('win','🔥 +'+num+' Престиж','×'+state.prestige);
+    }else{
+      if(typeof sndClick==='function')sndClick();
+      if(typeof toast==='function')toast('🔥 Престиж: '+state.prestige+' (+'+(state.prestige*5)+'%)');
+      if(typeof addFeed==='function')addFeed('info','🔥 '+num+' Престиж','×'+state.prestige);
+    }
+  });
+
+  // Лёгкая подсказка при долгом нажатии (для отладки)
+  let pressTimer=null;
+  btn.addEventListener('touchstart',()=>{
+    pressTimer=setTimeout(()=>{
+      if(typeof toast==='function')toast('👆 Секретная кнопка престижа');
+    },1200);
+  },{passive:true});
+  btn.addEventListener('touchend',()=>{clearTimeout(pressTimer)});
+  btn.addEventListener('touchcancel',()=>{clearTimeout(pressTimer)});
+})();
 <div class="minigame-page" id="minigamePage">
   <div class="page-header">
     <button class="back-btn" id="backFromGame">←</button>
