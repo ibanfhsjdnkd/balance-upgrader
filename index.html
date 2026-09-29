@@ -8,7 +8,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Upgrader">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjM4IiBmaWxsPSIjMWEwZjMzIi8+PGNpcmNsZSBjeD0iOTYiIGN5PSI5NiIgcj0iNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2MwODRmYyIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjE4IiBmaWxsPSIjYzA4NGZjIi8+PC9zdmc+">
 <title>💰 Upgrader</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
@@ -161,7 +160,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .admin-panel .status.on{background:rgba(168,85,247,.25);color:#d8b4fe;border:1px solid rgba(192,132,252,.5)}
 .admin-panel .divider{height:1px;background:rgba(168,85,247,.3);margin:10px 0}
 
-/* ПРОФИЛЬ */
 .profile-page{position:fixed;inset:0;background:radial-gradient(circle at 50% 0%,#2a1a4e 0%,#150a2e 50%,#0a0515 100%);z-index:1500;padding:20px;overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.34,1.2,.64,1)}
 .profile-page.show{transform:translateX(0)}
 .profile-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
@@ -177,7 +175,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .stat-value.gold{color:#fcd34d;text-shadow:0 0 16px rgba(252,211,77,.8)}
 .stat-value.pct{color:#d8b4fe;text-shadow:0 0 16px rgba(216,180,254,.9)}
 
-/* КНОПКА ПРОФИЛЯ (СНИЗУ) */
 .profile-btn{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:900;padding:12px 28px;font-size:14px;font-weight:800;letter-spacing:2px;color:#e9d5ff;background:linear-gradient(135deg,#4c1d95,#3b1578,#2e1065);border:2px solid rgba(147,51,234,.6);border-radius:14px;cursor:pointer;transition:all .2s;box-shadow:0 8px 24px rgba(76,29,149,.6),0 0 20px rgba(124,58,237,.4);text-transform:uppercase}
 .profile-btn:hover{background:linear-gradient(135deg,#5b21b6,#4c1d95,#3b1578);box-shadow:0 10px 32px rgba(107,33,168,.8);transform:translateX(-50%) scale(1.05)}
 .profile-btn:active{transform:translateX(-50%) scale(.97)}
@@ -185,10 +182,8 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 </head>
 <body>
 
-<!-- Кнопка звука -->
 <button class="sound-btn" id="soundBtn" title="Звук">🔊</button>
 
-<!-- Кнопка админки -->
 <button class="admin-btn" id="adminBtn" aria-label="Админ-панель">
   <svg viewBox="0 0 32 32" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -210,7 +205,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
   </svg>
 </button>
 
-<!-- АДМИН ПАНЕЛЬ (закрепляется после входа) -->
 <div class="admin-panel" id="adminPanel">
   <h3>🛡️ Админ-панель</h3>
   <div id="adminLogin">
@@ -220,15 +214,12 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
   </div>
   <div id="adminContent" style="display:none">
     <div class="status on">✅ Доступ разрешён (закреплено)</div>
-
     <div class="hint" style="text-align:left;margin-bottom:8px">📌 Установить баланс:</div>
     <div class="grid">
       <input type="number" id="adminSetBalance" placeholder="Число" value="10000">
       <button class="add" id="adminSetBtn">📌 Задать</button>
     </div>
-
     <div class="divider"></div>
-
     <div class="hint" style="text-align:left;margin-bottom:8px">➕ Пополнить баланс:</div>
     <div class="grid">
       <input type="number" id="adminAmount" placeholder="Сумма" value="1000000">
@@ -236,18 +227,15 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
     </div>
     <button class="dng" id="adminMax">💎 +10M</button>
     <button class="dng" id="adminBillion">💎 +1B</button>
-
     <div class="divider"></div>
     <button class="dng" id="adminZero">🗑 Обнулить баланс</button>
     <button class="dng" id="adminResetStats">📊 Сбросить статистику</button>
-
     <div class="divider"></div>
     <button class="close" id="adminLogout">🚪 Выйти из админки</button>
   </div>
   <button class="close" id="adminClose">✖ Закрыть</button>
 </div>
 
-<!-- МОДАЛКА РЕЗУЛЬТАТА -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modal">
     <div class="modal-icon" id="modalIcon">🎉</div>
@@ -258,7 +246,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
   </div>
 </div>
 
-<!-- ПРОФИЛЬ -->
 <div class="profile-page" id="profilePage">
   <div class="profile-header">
     <button class="back-btn" id="backBtn" aria-label="Назад">←</button>
@@ -402,7 +389,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
   </div>
 </div>
 
-<!-- КНОПКА ПРОФИЛЯ СНИЗУ -->
 <button class="profile-btn" id="profileBtn">👤 ПРОФИЛЬ</button>
 
 <script>
@@ -424,40 +410,14 @@ function parseBet(str){
 }
 
 /* ============ НАСТРОЙКИ ============ */
-const SAVE_KEY='upgrader_v7';
+const SAVE_KEY='upgrader_v8';
 const HOUSE_EDGE=0.03;
 const ADMIN_CODE='IvanAdmin0610';
 const BONUS_AMOUNT=1000;
 
 /* ============ СОСТОЯНИЕ ============ */
-let state={
-  balance:1000,
-  lastBet:100,
-  lastChance:50,
-  games:0,
-  wins:0,
-  losses:0,
-  record:0,
-  profit:0,
-  soundOn:true
-};
-function load(){
-  try{
-    const r=localStorage.getItem(SAVE_KEY);
-    if(r){
-      const d=JSON.parse(r);
-      state.balance=d.balance??1000;
-      state.lastBet=d.lastBet??100;
-      state.lastChance=d.lastChance??50;
-      state.games=d.games??0;
-      state.wins=d.wins??0;
-      state.losses=d.losses??0;
-      state.record=d.record??0;
-      state.profit=d.profit??0;
-      state.soundOn=d.soundOn??true;
-    }
-  }catch(e){}
-}
+let state={balance:1000,lastBet:100,lastChance:50,games:0,wins:0,losses:0,record:0,profit:0,soundOn:true};
+function load(){try{const r=localStorage.getItem(SAVE_KEY);if(r){const d=JSON.parse(r);state.balance=d.balance??1000;state.lastBet=d.lastBet??100;state.lastChance=d.lastChance??50;state.games=d.games??0;state.wins=d.wins??0;state.losses=d.losses??0;state.record=d.record??0;state.profit=d.profit??0;state.soundOn=d.soundOn??true}}catch(e){}}
 function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(state))}catch(e){}}
 
 /* ============ ПЕРЕМЕННЫЕ ============ */
@@ -467,26 +427,18 @@ let arrowAngle=0;
 
 function multFromChance(chance){return (100/chance)*(1-HOUSE_EDGE)}
 
-/* ============ ЗВУКИ (Web Audio) ============ */
+/* ============ ЗВУКИ ============ */
 let audioCtx=null;
-function initAudio(){
-  if(!audioCtx){
-    try{audioCtx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}
-  }
-  if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume();
-}
+function initAudio(){if(!audioCtx){try{audioCtx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume()}
 function playTone(freq,duration,type='sine',volume=0.1,slideTo=null){
   if(!state.soundOn||!audioCtx)return;
   try{
-    const o=audioCtx.createOscillator();
-    const g=audioCtx.createGain();
-    o.type=type;
-    o.frequency.setValueAtTime(freq,audioCtx.currentTime);
+    const o=audioCtx.createOscillator();const g=audioCtx.createGain();
+    o.type=type;o.frequency.setValueAtTime(freq,audioCtx.currentTime);
     if(slideTo)o.frequency.exponentialRampToValueAtTime(slideTo,audioCtx.currentTime+duration);
     g.gain.setValueAtTime(volume,audioCtx.currentTime);
     g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+duration);
-    o.connect(g);g.connect(audioCtx.destination);
-    o.start();o.stop(audioCtx.currentTime+duration);
+    o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration);
   }catch(e){}
 }
 function sndClick(){playTone(400,0.05,'triangle',0.08)}
@@ -526,28 +478,20 @@ const $soundBtn=document.getElementById('soundBtn');
 
 let feedCount=0;
 function addFeed(type,text,val){
-  const empty=$feed.querySelector('.feed-empty');
-  if(empty)empty.remove();
-  const el=document.createElement('div');
-  el.className='feed-item '+type;
+  const empty=$feed.querySelector('.feed-empty');if(empty)empty.remove();
+  const el=document.createElement('div');el.className='feed-item '+type;
   el.innerHTML=`<span>${text}</span>${val?`<span class="val">${val}</span>`:''}`;
-  $feed.appendChild(el);
-  feedCount++;
+  $feed.appendChild(el);feedCount++;
   while($feed.children.length>50)$feed.removeChild($feed.firstChild);
-  $feedCount.textContent=feedCount;
-  $feed.scrollTop=$feed.scrollHeight;
+  $feedCount.textContent=feedCount;$feed.scrollTop=$feed.scrollHeight;
 }
-
 function updateBalance(){
   const prev=parseFloat($balance.dataset.raw||'0');
-  $balance.textContent=fmt(state.balance);
-  $balance.dataset.raw=state.balance;
+  $balance.textContent=fmt(state.balance);$balance.dataset.raw=state.balance;
   if(state.balance>prev){$balance.classList.add('pop');setTimeout(()=>$balance.classList.remove('pop'),120)}
 }
-
 function updateProfileStats(){
-  document.getElementById('statWinRate').textContent=
-    state.games>0?((state.wins/state.games*100).toFixed(1)+'%'):'0%';
+  document.getElementById('statWinRate').textContent=state.games>0?((state.wins/state.games*100).toFixed(1)+'%'):'0%';
   document.getElementById('statRecord').textContent=fmt(state.record);
   document.getElementById('statGames').textContent=state.games;
   document.getElementById('statWL').textContent=state.wins+' / '+state.losses;
@@ -558,6 +502,7 @@ function updateProfileStats(){
 
 /* ============ КОЛЕСО ============ */
 function polar(cx,cy,r,deg){
+  // deg: 0 = верх (12 часов), по часовой
   const rad=(deg-90)*Math.PI/180;
   return {x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)};
 }
@@ -573,8 +518,7 @@ function drawTicks(){
   for(let i=0;i<60;i++){
     const angle=i*6;
     const isMajor=i%5===0;
-    const r1=isMajor?84:87;
-    const r2=89;
+    const r1=isMajor?84:87;const r2=89;
     const p1=polar(100,100,r1,angle);
     const p2=polar(100,100,r2,angle);
     const line=document.createElementNS('http://www.w3.org/2000/svg','line');
@@ -585,7 +529,7 @@ function drawTicks(){
   }
 }
 function drawWheel(chance){
-  const R=85, cx=100, cy=100;
+  const R=85,cx=100,cy=100;
   const winAngle=chance/100*360;
   const startAngle=-90;
   const winEnd=startAngle+winAngle;
@@ -605,58 +549,54 @@ function updatePreview(){
   $previewLose.textContent=fmt(bet);
   const pos=((chance-1)/94*100);
   $chanceSlider.style.setProperty('--pos',pos+'%');
-  state.lastBet=bet;
-  state.lastChance=chance;
+  state.lastBet=bet;state.lastChance=chance;
   drawWheel(chance);
 }
 function toast(msg){
-  const t=document.createElement('div');
-  t.className='toast';
-  t.textContent=msg;
-  document.body.appendChild(t);
-  requestAnimationFrame(()=>t.classList.add('show'));
+  const t=document.createElement('div');t.className='toast';t.textContent=msg;
+  document.body.appendChild(t);requestAnimationFrame(()=>t.classList.add('show'));
   setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},1600);
 }
 
 /* ============ БОНУС ============ */
 function checkBonus(){
   if(state.balance<=0){
-    state.balance+=BONUS_AMOUNT;
-    updateBalance();
-    save();
-    sndBonus();
+    state.balance+=BONUS_AMOUNT;updateBalance();save();sndBonus();
     toast('💜 Не волнуйся, не все потеряно!');
     addFeed('info','💜 Не волнуйся, не все потеряно!','+'+fmt(BONUS_AMOUNT));
   }
 }
 
-/* ============ КРУЧЕНИЕ ============ */
+/* ============ КРУЧЕНИЕ СТРЕЛКИ ============ */
+// Фиолетовый сектор в CSS-углах стрелки: от -90° до (-90 + chance*3.6)°
+// 0° = вправо, положительное = по часовой. Верх = -90°.
 function spinArrow(win){
   const chance=parseInt($chanceSlider.value);
   const winStart=-90;
   const winEnd=-90+chance/100*360;
   const loseStart=winEnd;
   const loseEnd=-90+360;
+
   let targetAngle;
   if(win){
     const range=winEnd-winStart;
-    const pad=range*0.1;
+    const pad=range*0.08;
     targetAngle=winStart+pad+Math.random()*(range-pad*2);
   }else{
     const range=loseEnd-loseStart;
-    const pad=range>20?range*0.05:0;
+    const pad=range>20?range*0.05:1;
     targetAngle=range>0?loseStart+pad+Math.random()*(range-pad*2):loseStart+0.5;
   }
-  const baseFullTurns=5*360;
+
+  const fullTurns=5*360;
   const currentNorm=((arrowAngle%360)+360)%360;
   const targetNorm=((targetAngle%360)+360)%360;
   let delta=targetNorm-currentNorm;
   if(delta<0)delta+=360;
-  const totalRotation=baseFullTurns+delta;
-  arrowAngle+=totalRotation;
+
+  arrowAngle+=fullTurns+delta;
   $wheelArrow.style.transform=`translate(0,-50%) rotate(${arrowAngle}deg)`;
 
-  // Тики во время вращения
   let tickCount=0;
   const tickInt=setInterval(()=>{
     if(!spinning||tickCount>50){clearInterval(tickInt);return}
@@ -670,13 +610,11 @@ function spinArrow(win){
 function showResultModal(win,amount,chance,mult,bet){
   $modal.className='modal '+(win?'win':'lose');
   if(win){
-    $modalIcon.textContent='🎉';
-    $modalTitle.textContent='ПОБЕДА';
+    $modalIcon.textContent='🎉';$modalTitle.textContent='ПОБЕДА';
     $modalAmount.textContent='+'+fmt(amount);
     $modalSub.textContent=`×${mult.toFixed(2)} · шанс ${chance}% · ставка ${fmt(bet)}`;
   }else{
-    $modalIcon.textContent='💜';
-    $modalTitle.textContent='ПОРАЖЕНИЕ';
+    $modalIcon.textContent='💜';$modalTitle.textContent='ПОРАЖЕНИЕ';
     $modalAmount.textContent='-'+fmt(amount);
     $modalSub.textContent=`шанс ${chance}% · ставка ${fmt(bet)}`;
   }
@@ -687,25 +625,19 @@ $modalOverlay.addEventListener('click',(e)=>{if(e.target===$modalOverlay)$modalO
 
 /* ============ ИГРА ============ */
 async function play(){
-  if(spinning)return;
-  initAudio();
+  if(spinning)return;initAudio();
   const bet=parseBet($betInput.value);
   if(isNaN(bet)||bet<=0){toast('Некорректная ставка');return}
   if(bet>state.balance){toast('Недостаточно средств');addFeed('lose','❌ Не хватило на ставку','-'+fmt(bet-state.balance));return}
 
   const chance=parseInt($chanceSlider.value);
   const mult=multFromChance(chance);
-  spinning=true;
-  $actionBtn.disabled=true;
-  $chanceSlider.disabled=true;
+  spinning=true;$actionBtn.disabled=true;$chanceSlider.disabled=true;
   $resultDisplay.className='result-display';
-  $resultMain.textContent='🎰';
-  $resultSub.textContent='Крутится...';
+  $resultMain.textContent='🎰';$resultSub.textContent='Крутится...';
 
   const win=Math.random()*100<chance;
-  state.balance-=bet;
-  updateBalance();
-  sndSpinStart();
+  state.balance-=bet;updateBalance();sndSpinStart();
 
   await spinArrow(win);
 
@@ -713,33 +645,24 @@ async function play(){
   if(win){
     const winAmount=Math.floor(bet*mult);
     const profit=winAmount-bet;
-    state.balance+=winAmount;
-    state.wins++;
-    state.profit+=profit;
+    state.balance+=winAmount;state.wins++;state.profit+=profit;
     if(profit>state.record)state.record=profit;
     updateBalance();
     $resultDisplay.className='result-display win';
     $resultMain.textContent='+'+fmt(profit);
     $resultSub.textContent=`WIN ×${mult.toFixed(2)} (шанс ${chance}%)`;
     addFeed('win',`✅ ×${mult.toFixed(2)} (${chance}%)`,'+'+fmt(profit));
-    sndWin();
-    showResultModal(true,profit,chance,mult,bet);
+    sndWin();showResultModal(true,profit,chance,mult,bet);
   }else{
-    state.losses++;
-    state.profit-=bet;
+    state.losses++;state.profit-=bet;
     $resultDisplay.className='result-display lose';
     $resultMain.textContent='-'+fmt(bet);
     $resultSub.textContent=`BUST (шанс ${chance}%)`;
     addFeed('lose',`💀 Проигрыш (${chance}%)`,'-'+fmt(bet));
-    sndLose();
-    showResultModal(false,bet,chance,mult,bet);
+    sndLose();showResultModal(false,bet,chance,mult,bet);
   }
-
-  spinning=false;
-  $actionBtn.disabled=false;
-  $chanceSlider.disabled=false;
-  save();
-  checkBonus();
+  spinning=false;$actionBtn.disabled=false;$chanceSlider.disabled=false;
+  save();checkBonus();
 }
 
 /* ============ АДМИН ============ */
@@ -748,176 +671,77 @@ const $adminPanel=document.getElementById('adminPanel');
 const $adminLogin=document.getElementById('adminLogin');
 const $adminContent=document.getElementById('adminContent');
 const $adminCode=document.getElementById('adminCode');
-
-// Админка закреплена после входа (сохраняется в localStorage)
 let adminLocked=localStorage.getItem('upgrader_adminLocked')==='1';
-
 function applyAdminState(){
-  if(adminLocked){
-    isAdmin=true;
-    $adminLogin.style.display='none';
-    $adminContent.style.display='block';
-    $adminPanel.classList.add('show');
-    $adminBtn.classList.add('active');
-  }else{
-    isAdmin=false;
-    $adminLogin.style.display='block';
-    $adminContent.style.display='none';
-  }
+  if(adminLocked){isAdmin=true;$adminLogin.style.display='none';$adminContent.style.display='block';$adminPanel.classList.add('show');$adminBtn.classList.add('active')}
+  else{isAdmin=false;$adminLogin.style.display='block';$adminContent.style.display='none'}
 }
-
 $adminBtn.addEventListener('click',()=>{
-  $adminPanel.classList.toggle('show');
-  $adminBtn.classList.toggle('active');
-  if(!isAdmin){
-    $adminLogin.style.display='block';
-    $adminContent.style.display='none';
-  }else{
-    $adminLogin.style.display='none';
-    $adminContent.style.display='block';
-  }
+  $adminPanel.classList.toggle('show');$adminBtn.classList.toggle('active');
+  if(!isAdmin){$adminLogin.style.display='block';$adminContent.style.display='none'}
+  else{$adminLogin.style.display='none';$adminContent.style.display='block'}
 });
-
-document.getElementById('adminClose').addEventListener('click',()=>{
-  if(adminLocked){
-    // Если закреплено — не закрываем совсем, просто оставляем
-    $adminPanel.classList.remove('show');
-    $adminBtn.classList.remove('active');
-  }else{
-    $adminPanel.classList.remove('show');
-    $adminBtn.classList.remove('active');
-  }
-});
-
+document.getElementById('adminClose').addEventListener('click',()=>{$adminPanel.classList.remove('show');$adminBtn.classList.remove('active')});
 document.getElementById('adminLoginBtn').addEventListener('click',()=>{
   const code=$adminCode.value.trim();
   if(code===ADMIN_CODE){
-    isAdmin=true;
-    adminLocked=true;
-    localStorage.setItem('upgrader_adminLocked','1');
-    $adminLogin.style.display='none';
-    $adminContent.style.display='block';
-    $adminCode.value='';
-    sndClick();
-    toast('✅ Доступ разрешён (закреплено)');
+    isAdmin=true;adminLocked=true;localStorage.setItem('upgrader_adminLocked','1');
+    $adminLogin.style.display='none';$adminContent.style.display='block';$adminCode.value='';
+    sndClick();toast('✅ Доступ разрешён (закреплено)');
     addFeed('admin','🛡️⭐ Админ вошёл в систему','');
-  }else{
-    toast('❌ Неверный код');
-    $adminCode.value='';
-  }
+  }else{toast('❌ Неверный код');$adminCode.value=''}
 });
 $adminCode.addEventListener('keydown',(e)=>{if(e.key==='Enter')document.getElementById('adminLoginBtn').click()});
-
 document.getElementById('adminLogout').addEventListener('click',()=>{
-  isAdmin=false;
-  adminLocked=false;
-  localStorage.removeItem('upgrader_adminLocked');
-  $adminLogin.style.display='block';
-  $adminContent.style.display='none';
-  $adminPanel.classList.remove('show');
-  $adminBtn.classList.remove('active');
+  isAdmin=false;adminLocked=false;localStorage.removeItem('upgrader_adminLocked');
+  $adminLogin.style.display='block';$adminContent.style.display='none';
+  $adminPanel.classList.remove('show');$adminBtn.classList.remove('active');
   toast('🚪 Вы вышли из админки');
 });
-
 document.getElementById('adminAdd').addEventListener('click',()=>{
   if(!isAdmin)return;
   const amount=parseBet(document.getElementById('adminAmount').value);
   if(isNaN(amount)||amount<=0){toast('Некорректная сумма');return}
-  state.balance+=amount;
-  updateBalance();save();
+  state.balance+=amount;updateBalance();save();
   addFeed('admin','💰 Админ пополнил баланс','+'+fmt(amount));
   toast('+'+fmt(amount)+' добавлено');
 });
-
 document.getElementById('adminSetBtn').addEventListener('click',()=>{
   if(!isAdmin)return;
   const val=parseBet(document.getElementById('adminSetBalance').value);
   if(isNaN(val)||val<0){toast('Некорректное число');return}
-  state.balance=val;
-  updateBalance();save();
+  state.balance=val;updateBalance();save();
   addFeed('admin','📌 Админ установил баланс',fmt(val));
   toast('Баланс: '+fmt(val));
 });
-
-document.getElementById('adminMax').addEventListener('click',()=>{
-  if(!isAdmin)return;
-  state.balance+=1e7;
-  updateBalance();save();
-  addFeed('admin','💰 Админ пополнил баланс','+10M');
-});
-
-document.getElementById('adminBillion').addEventListener('click',()=>{
-  if(!isAdmin)return;
-  state.balance+=1e9;
-  updateBalance();save();
-  addFeed('admin','💰 Админ пополнил баланс','+1B');
-});
-
+document.getElementById('adminMax').addEventListener('click',()=>{if(!isAdmin)return;state.balance+=1e7;updateBalance();save();addFeed('admin','💰 Админ пополнил баланс','+10M')});
+document.getElementById('adminBillion').addEventListener('click',()=>{if(!isAdmin)return;state.balance+=1e9;updateBalance();save();addFeed('admin','💰 Админ пополнил баланс','+1B')});
 document.getElementById('adminZero').addEventListener('click',()=>{
-  if(!isAdmin)return;
-  if(!confirm('Обнулить баланс?'))return;
-  state.balance=0;
-  updateBalance();save();
-  addFeed('admin','🗑 Админ обнулил баланс','0');
-  checkBonus();
+  if(!isAdmin)return;if(!confirm('Обнулить баланс?'))return;
+  state.balance=0;updateBalance();save();
+  addFeed('admin','🗑 Админ обнулил баланс','0');checkBonus();
 });
-
 document.getElementById('adminResetStats').addEventListener('click',()=>{
-  if(!isAdmin)return;
-  if(!confirm('Сбросить всю статистику?'))return;
+  if(!isAdmin)return;if(!confirm('Сбросить всю статистику?'))return;
   state.games=0;state.wins=0;state.losses=0;state.record=0;state.profit=0;
-  save();updateProfileStats();
-  addFeed('admin','📊 Статистика сброшена','');
-  toast('Статистика сброшена');
+  save();updateProfileStats();addFeed('admin','📊 Статистика сброшена','');toast('Статистика сброшена');
 });
 
 /* ============ ПРОФИЛЬ ============ */
-document.getElementById('profileBtn').addEventListener('click',()=>{
-  updateProfileStats();
-  $profilePage.classList.add('show');
-  sndClick();
-});
-document.getElementById('backBtn').addEventListener('click',()=>{
-  $profilePage.classList.remove('show');
-  sndClick();
-});
+document.getElementById('profileBtn').addEventListener('click',()=>{updateProfileStats();$profilePage.classList.add('show');sndClick()});
+document.getElementById('backBtn').addEventListener('click',()=>{$profilePage.classList.remove('show');sndClick()});
 
 /* ============ ЗВУК ============ */
-function updateSoundBtn(){
-  $soundBtn.textContent=state.soundOn?'🔊':'🔇';
-  $soundBtn.classList.toggle('off',!state.soundOn);
-}
-$soundBtn.addEventListener('click',()=>{
-  state.soundOn=!state.soundOn;
-  updateSoundBtn();
-  save();
-  if(state.soundOn){initAudio();sndClick()}
-});
+function updateSoundBtn(){$soundBtn.textContent=state.soundOn?'🔊':'🔇';$soundBtn.classList.toggle('off',!state.soundOn)}
+$soundBtn.addEventListener('click',()=>{state.soundOn=!state.soundOn;updateSoundBtn();save();if(state.soundOn){initAudio();sndClick()}});
 
 /* ============ СОБЫТИЯ ============ */
 $actionBtn.addEventListener('click',play);
 $betInput.addEventListener('input',updatePreview);
 $chanceSlider.addEventListener('input',updatePreview);
-
-document.getElementById('betHalf').addEventListener('click',()=>{
-  if(spinning)return;
-  const v=parseBet($betInput.value);
-  if(!isNaN(v))$betInput.value=Math.max(1,Math.floor(v/2));
-  updatePreview();sndClick();
-});
-document.getElementById('betDouble').addEventListener('click',()=>{
-  if(spinning)return;
-  const v=parseBet($betInput.value);
-  if(!isNaN(v))$betInput.value=Math.min(state.balance,Math.floor(v*2));
-  updatePreview();sndClick();
-});
-document.querySelectorAll('.bet-quick button').forEach(b=>{
-  b.addEventListener('click',()=>{
-    if(spinning)return;
-    $betInput.value=b.dataset.q;
-    updatePreview();sndClick();
-  });
-});
+document.getElementById('betHalf').addEventListener('click',()=>{if(spinning)return;const v=parseBet($betInput.value);if(!isNaN(v))$betInput.value=Math.max(1,Math.floor(v/2));updatePreview();sndClick()});
+document.getElementById('betDouble').addEventListener('click',()=>{if(spinning)return;const v=parseBet($betInput.value);if(!isNaN(v))$betInput.value=Math.min(state.balance,Math.floor(v*2));updatePreview();sndClick()});
+document.querySelectorAll('.bet-quick button').forEach(b=>{b.addEventListener('click',()=>{if(spinning)return;$betInput.value=b.dataset.q;updatePreview();sndClick()})});
 
 document.getElementById('resetBtn').addEventListener('click',()=>{
   if(!confirm('Точно сбросить весь прогресс?'))return;
@@ -926,24 +750,13 @@ document.getElementById('resetBtn').addEventListener('click',()=>{
   $feed.innerHTML='<div class="feed-empty">Прогресс сброшен. Баланс: 1K</div>';
   feedCount=0;$feedCount.textContent='0';
   addFeed('info','🔄 Игра сброшена. Начальный баланс: '+fmt(1000),'');
-  updateBalance();updateProfileStats();
-  save();
+  updateBalance();updateProfileStats();save();
 });
 
 /* ============ PWA ============ */
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
-    const swCode=`
-      self.addEventListener('install',e=>{self.skipWaiting()});
-      self.addEventListener('activate',e=>{e.waitUntil(clients.claim())});
-      self.addEventListener('fetch',e=>{
-        e.respondWith(
-          caches.open('upgrader-v1').then(cache=>
-            fetch(e.request).then(r=>{cache.put(e.request,r.clone());return r}).catch(()=>cache.match(e.request))
-          )
-        );
-      });
-    `;
+    const swCode=`self.addEventListener('install',e=>{self.skipWaiting()});self.addEventListener('activate',e=>{e.waitUntil(clients.claim())});self.addEventListener('fetch',e=>{e.respondWith(caches.open('upgrader-v1').then(c=>fetch(e.request).then(r=>{c.put(e.request,r.clone());return r}).catch(()=>c.match(e.request))))});`;
     const blob=new Blob([swCode],{type:'application/javascript'});
     const swUrl=URL.createObjectURL(blob);
     navigator.serviceWorker.register(swUrl).catch(()=>{});
@@ -954,16 +767,9 @@ if('serviceWorker' in navigator){
 load();
 $betInput.value=state.lastBet;
 $chanceSlider.value=state.lastChance;
-drawTicks();
-updateBalance();
-updatePreview();
-updateProfileStats();
-updateSoundBtn();
-applyAdminState();
+drawTicks();updateBalance();updatePreview();updateProfileStats();updateSoundBtn();applyAdminState();
 addFeed('info','🎮 Выбирай ставку и шанс. Удачи!','');
 checkBonus();
-
-// Разблокировка звука по первому касанию (требование браузеров)
 document.body.addEventListener('touchstart',initAudio,{once:true});
 document.body.addEventListener('click',initAudio,{once:true});
 </script>
