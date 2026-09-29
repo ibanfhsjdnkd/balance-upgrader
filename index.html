@@ -176,7 +176,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .stat-value.gold{color:#fcd34d}
 .stat-value.pct{color:#d8b4fe}
 
-/* МЕНЮ МИНИ-ИГР */
 .games-list{display:flex;flex-direction:column;gap:12px;max-width:560px;margin:0 auto}
 .game-card{background:linear-gradient(135deg,rgba(168,85,247,.2),rgba(124,58,237,.1));border:2px solid rgba(168,85,247,.5);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .2s}
 .game-card:hover{background:linear-gradient(135deg,rgba(192,132,252,.35),rgba(147,51,234,.2));transform:translateX(6px);box-shadow:0 0 24px rgba(168,85,247,.5)}
@@ -190,7 +189,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .profile-btn:hover,.game-btn:hover{background:linear-gradient(135deg,#5b21b6,#4c1d95,#3b1578);transform:translateY(-2px)}
 .profile-btn svg,.game-btn svg{width:32px;height:32px;filter:drop-shadow(0 0 8px rgba(192,132,252,.9))}
 
-/* FLAPPY */
 .minigame-canvas-wrap{position:relative;flex:1;max-width:560px;width:100%;margin:0 auto;border-radius:16px;overflow:hidden;border:2px solid rgba(168,85,247,.5);background:#0a0515;min-height:400px}
 #gameCanvas{display:block;width:100%;height:100%;touch-action:none}
 .mg-hud{position:absolute;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;pointer-events:none;font-weight:900;z-index:5}
@@ -201,16 +199,16 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .mg-overlay h2{font-size:22px;color:#d8b4fe;font-weight:900;letter-spacing:2px}
 .mg-overlay p{font-size:13px;color:#c4b5fd;max-width:280px;line-height:1.5}
 .mg-play-btn{background:linear-gradient(135deg,#7c3aed,#9333ea);border:2px solid #c084fc;color:#e9d5ff;padding:14px 36px;border-radius:14px;cursor:pointer;font-weight:800;font-size:15px;letter-spacing:2px;text-transform:uppercase}
-.mg-play-btn:hover{transform:scale(1.05)}
 
-/* МИНЫ */
-.mines-wrap{max-width:560px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:14px;flex:1}
+.mines-wrap,.tower-wrap{max-width:560px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:14px;flex:1}
 .mines-controls{background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(124,58,237,.08));border:1px solid rgba(168,85,247,.4);border-radius:14px;padding:14px}
 .mines-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
+.mines-row:last-child{margin-bottom:0}
 .mines-row label{font-size:11px;color:#a855f7;letter-spacing:2px;text-transform:uppercase;font-weight:700;flex-shrink:0}
 .mine-opt{flex:1;padding:10px;border-radius:10px;background:rgba(20,10,40,.7);border:2px solid rgba(168,85,247,.35);color:#c084fc;cursor:pointer;font-weight:800;font-size:14px;transition:all .15s}
 .mine-opt:hover{background:rgba(168,85,247,.25)}
 .mine-opt.active{background:linear-gradient(135deg,#7c3aed,#9333ea);border-color:#e9d5ff;color:#fff;box-shadow:0 0 16px rgba(192,132,252,.8)}
+.mine-opt:disabled{opacity:.5;cursor:not-allowed}
 .mines-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;aspect-ratio:1/1;max-width:420px;margin:0 auto;width:100%}
 .mine-cell{background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(60,35,100,.15));border:2px solid rgba(168,85,247,.5);border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:#e9d5ff;transition:all .15s;aspect-ratio:1/1}
 .mine-cell:hover:not(.revealed){background:linear-gradient(135deg,rgba(168,85,247,.4),rgba(124,58,237,.25));transform:scale(1.05)}
@@ -231,25 +229,21 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .mines-actions .cash:hover:not(:disabled){background:linear-gradient(135deg,#9333ea,#c084fc)}
 .mines-actions button:disabled{opacity:.4;cursor:not-allowed}
 
-/* БАШНЯ */
-.tower-wrap{max-width:560px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:14px;flex:1}
-.tower-controls{background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(124,58,237,.08));border:1px solid rgba(168,85,247,.4);border-radius:14px;padding:14px}
-.tower-level{background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(60,35,100,.1));border:2px solid rgba(168,85,247,.4);border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tower-level{background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(60,35,100,.1));border:2px solid rgba(168,85,247,.4);border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .tower-level.active{border-color:#c084fc;background:linear-gradient(135deg,rgba(168,85,247,.3),rgba(124,58,237,.15));box-shadow:0 0 20px rgba(192,132,252,.5)}
 .tower-level.done{opacity:.5;border-color:rgba(120,80,180,.3)}
-.tower-level .num{font-size:20px;font-weight:900;color:#e9d5ff;flex-shrink:0;width:40px}
-.tower-level .mult{font-size:14px;color:#fcd34d;font-weight:800}
-.tower-tiles{display:flex;gap:8px;flex:1}
-.tower-tile{flex:1;padding:14px 8px;border-radius:10px;background:rgba(20,10,40,.7);border:2px solid rgba(168,85,247,.5);color:#c084fc;font-weight:800;font-size:14px;cursor:pointer;transition:all .15s}
-.tower-tile:hover:not(:disabled){background:rgba(168,85,247,.35);transform:scale(1.03)}
+.tower-level .num{font-size:18px;font-weight:900;color:#e9d5ff;flex-shrink:0;width:30px}
+.tower-level .mult{font-size:12px;color:#fcd34d;font-weight:800;flex-shrink:0}
+.tower-tiles{display:flex;gap:6px;flex:1}
+.tower-tile{flex:1;padding:12px 4px;border-radius:8px;background:rgba(20,10,40,.7);border:2px solid rgba(168,85,247,.5);color:#c084fc;font-weight:800;font-size:13px;cursor:pointer;transition:all .15s}
+.tower-tile:hover:not(:disabled){background:rgba(168,85,247,.35);transform:scale(1.05)}
 .tower-tile.safe{background:linear-gradient(135deg,#c084fc,#7c3aed);border-color:#e9d5ff;color:#fff}
 .tower-tile.boom{background:linear-gradient(135deg,#4c1d95,#2e1065);border-color:#8b5cf6;color:#a78bfa}
 .tower-tile:disabled{cursor:not-allowed;opacity:.6}
-.tower-stack{display:flex;flex-direction:column-reverse;gap:8px;margin-top:8px;max-height:340px;overflow-y:auto;padding-right:4px}
+.tower-stack{display:flex;flex-direction:column-reverse;gap:8px;margin-top:8px;max-height:400px;overflow-y:auto;padding-right:4px}
 .tower-stack::-webkit-scrollbar{width:6px}
 .tower-stack::-webkit-scrollbar-thumb{background:#7c3aed;border-radius:6px}
 
-/* ЧАСТИЦЫ */
 #particles{position:fixed;inset:0;pointer-events:none;z-index:2500;overflow:hidden}
 .particle{position:absolute;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#e9d5ff,#c084fc 50%,#7c3aed);box-shadow:0 0 12px rgba(192,132,252,1);pointer-events:none;will-change:transform,opacity}
 </style>
@@ -357,7 +351,7 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
     </div>
     <div class="game-card" data-game="tower">
       <div class="icon">🏰</div>
-      <div class="info"><div class="name">БАШНЯ</div><div class="desc">9 уровней · множитель ставки</div></div>
+      <div class="info"><div class="name">БАШНЯ</div><div class="desc">9 уровней · 5 дверей</div></div>
     </div>
   </div>
 </div>
@@ -501,12 +495,12 @@ function parseBet(str){
 }
 
 /* ============ НАСТРОЙКИ ============ */
-const SAVE_KEY='upgrader_v10';
+const SAVE_KEY='upgrader_v11';
 const HOUSE_EDGE=0.03;
 const ADMIN_CODE='IvanAdmin0610';
 const BONUS_AMOUNT=1000;
 const COIN_PER_POINT=200;
-const PRESTIGE_BONUS_PER=0.05; // +5% к множителю за каждый престиж
+const PRESTIGE_BONUS_PER=0.05;
 
 /* ============ СОСТОЯНИЕ ============ */
 let state={
@@ -639,8 +633,13 @@ function drawTicks(){
 }
 function drawWheel(chance){
   const R=85,start=-90,winEnd=start+chance/100*360,loseEnd=start+360;
-  $segWin.setAttribute('d',arcPath(100,100,R,start,winEnd));
-  $segLose.setAttribute('d',arcPath(100,100,R,winEnd,loseEnd));
+  if(chance>=100){
+    $segWin.setAttribute('d',`M 100 100 m -85 0 a 85 85 0 1 0 170 0 a 85 85 0 1 0 -170 0`);
+    $segLose.setAttribute('d','');
+  }else{
+    $segWin.setAttribute('d',arcPath(100,100,R,start,winEnd));
+    $segLose.setAttribute('d',arcPath(100,100,R,winEnd,loseEnd));
+  }
   $centerText.textContent=chance+'%';
 }
 function updatePreview(){
@@ -671,11 +670,21 @@ function checkBonus(){
 }
 
 function spinArrow(win,chance){
-  const winStart=-90,winEnd=-90+chance/100*360,loseStart=winEnd,loseEnd=-90+360;
+  // Фиолетовый сектор: от -90° (верх) по часовой до (-90 + chance*3.6)°
+  const winStart=-90;
+  const winEnd=-90+chance/100*360;
+  const loseStart=winEnd;
+  const loseEnd=-90+360;
+
   let target;
   if(win){
-    const range=winEnd-winStart,pad=range*0.08;
-    target=winStart+pad+Math.random()*(range-pad*2);
+    if(chance>=100){
+      // 100% — стрелка встаёт в любую точку круга (везде победа)
+      target=winStart+Math.random()*359;
+    }else{
+      const range=winEnd-winStart,pad=range*0.08;
+      target=winStart+pad+Math.random()*(range-pad*2);
+    }
   }else{
     const range=loseEnd-loseStart,pad=range>20?range*0.05:1;
     target=range>0?loseStart+pad+Math.random()*(range-pad*2):loseStart+0.5;
@@ -725,7 +734,9 @@ async function play(){
   const win=Math.random()*100<winChance;
 
   state.balance-=bet;updateBalance();sndSpinStart();
-  await spinArrow(win,chance);
+  // Стрелка всегда визуально идёт по игровому шансу (или 100%, если админ выставил 100)
+  const visualChance = (isAdmin&&state.adminChanceOn) ? state.adminChance : chance;
+  await spinArrow(win, visualChance);
   state.games++;
   if(win){
     const winAmount=Math.floor(bet*mult),profit=winAmount-bet;
@@ -931,7 +942,7 @@ function mgGameOver(){
 function mgJump(e){if(e)e.preventDefault();if(!mgRunning)return;bird.vy=JUMP;sndClick()}
 $('backFromGame').addEventListener('click',()=>{
   mgRunning=false;if(mgRaf)cancelAnimationFrame(mgRaf);
-  if(minesActive)stopMines();
+  stopMines();
   $minigamePage.classList.remove('show');
   $mgOverlay.classList.remove('hidden');
   $mgTitle.textContent='🐦 FLAPPY';
@@ -947,7 +958,6 @@ window.addEventListener('resize',()=>{if($minigamePage.classList.contains('show'
 
 /* ============ МИНЫ 5×5 ============ */
 let minesActive=false,minesBoard=[],minesRevealed=0,minesCount=3,minesBet=0,minesMult=0;
-const MINES_MULT={3:1.13,5:1.25,10:1.75}; // множитель за каждую безопасную ячейку
 
 function openMines(){
   $('gameTitle').textContent='💣 МИНЫ';
@@ -981,16 +991,16 @@ function openMines(){
       </div>
     `;
     $minigamePage.appendChild(wrap);
-    document.querySelectorAll('.mine-opt').forEach(b=>{
+    document.querySelectorAll('#minesWrap .mine-opt').forEach(b=>{
       b.addEventListener('click',()=>{
         if(minesActive)return;
-        document.querySelectorAll('.mine-opt').forEach(x=>x.classList.remove('active'));
+        document.querySelectorAll('#minesWrap .mine-opt').forEach(x=>x.classList.remove('active'));
         b.classList.add('active');
         minesCount=parseInt(b.dataset.mines);
         sndClick();
       });
     });
-    document.querySelector('.mine-opt[data-mines="3"]').classList.add('active');
+    document.querySelector('#minesWrap .mine-opt[data-mines="3"]').classList.add('active');
     $('minesBetMax').addEventListener('click',()=>{if(minesActive)return;$('minesBetInput').value=state.balance;sndClick()});
     $('minesStart').addEventListener('click',startMines);
     $('minesCash').addEventListener('click',cashMines);
@@ -1015,7 +1025,6 @@ function buildMinesGrid(){
 }
 
 function updateMinesUI(){
-  const safe=25-minesCount-minesRevealed;
   $('minesOpened').textContent=minesRevealed+' / '+(25-minesCount);
   $('minesMult').textContent=minesMult.toFixed(2)+'×';
   $('minesWin').textContent=fmt(Math.floor(minesBet*minesMult));
@@ -1029,7 +1038,6 @@ function startMines(){
   state.balance-=bet;updateBalance();
   minesBet=bet;minesRevealed=0;minesMult=1;minesActive=true;
 
-  // генерим поле
   minesBoard=Array(25).fill('gem');
   const idx=[...Array(25).keys()];
   for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}
@@ -1039,7 +1047,7 @@ function startMines(){
   $('minesStart').disabled=true;
   $('minesCash').disabled=true;
   $('minesBetInput').disabled=true;
-  document.querySelectorAll('.mine-opt').forEach(b=>b.disabled=true);
+  document.querySelectorAll('#minesWrap .mine-opt').forEach(b=>b.disabled=true);
   updateMinesUI();
   save();
   sndClick();
@@ -1052,13 +1060,12 @@ function clickMine(i){
   if(minesBoard[i]==='bomb'){
     cell.classList.add('revealed','bomb');
     cell.textContent='💥';
-    // показываем все бомбы
     minesBoard.forEach((v,j)=>{if(v==='bomb'){const c=document.querySelector(`.mine-cell[data-i="${j}"]`);if(c){c.classList.add('shown');if(!c.textContent||c.textContent==='?')c.textContent='💣'}}});
     minesActive=false;
     $('minesStart').disabled=false;
     $('minesCash').disabled=true;
     $('minesBetInput').disabled=false;
-    document.querySelectorAll('.mine-opt').forEach(b=>b.disabled=false);
+    document.querySelectorAll('#minesWrap .mine-opt').forEach(b=>b.disabled=false);
     sndLose();
     addFeed('lose','💣 Мины: взрыв','-'+fmt(minesBet));
     toast('💥 Взрыв! -'+fmt(minesBet));
@@ -1069,19 +1076,13 @@ function clickMine(i){
   cell.classList.add('revealed','gem');
   cell.textContent='💎';
   minesRevealed++;
-  // множитель: базовый шаг
   const safeTotal=25-minesCount;
-  const perCell=MINES_MULT[minesCount]/safeTotal;
-  minesMult=1+perStep(minesCount,safeTotal,minesRevealed);
+  const left=safeTotal-minesRevealed;
+  if(left<=0){cashMines();return}
+  minesMult=1+((safeTotal/left)-1);
   $('minesCash').disabled=false;
   updateMinesUI();
   sndClick();
-}
-function perStep(mines,safeTotal,opened){
-  // Экспоненциальный рост: (safeTotal/(safeTotal-opened))
-  const left=safeTotal-opened;
-  if(left<=0)return 99;
-  return (safeTotal/left)-1;
 }
 
 function cashMines(){
@@ -1098,8 +1099,7 @@ function cashMines(){
   $('minesStart').disabled=false;
   $('minesCash').disabled=true;
   $('minesBetInput').disabled=false;
-  document.querySelectorAll('.mine-opt').forEach(b=>b.disabled=false);
-  // Показать все бомбы
+  document.querySelectorAll('#minesWrap .mine-opt').forEach(b=>b.disabled=false);
   minesBoard.forEach((v,j)=>{if(v==='bomb'){const c=document.querySelector(`.mine-cell[data-i="${j}"]`);if(c&&!c.classList.contains('revealed')){c.classList.add('shown');c.textContent='💣'}}});
   if(minesMult>=5)burstParticles(60);
   save();
@@ -1108,13 +1108,14 @@ function cashMines(){
 function stopMines(){
   if(minesActive){
     minesActive=false;
-    $('minesStart').disabled=false;
-    $('minesCash').disabled=true;
+    const startBtn=$('minesStart');if(startBtn)startBtn.disabled=false;
+    const cashBtn=$('minesCash');if(cashBtn)cashBtn.disabled=true;
   }
 }
 
-/* ============ БАШНЯ ============ */
-let towerActive=false,towerLevel=0,towerBet=0,towerMult=1,towerMinesPerLevel=1,towerSelectedCols=[];
+/* ============ БАШНЯ — 5 ДВЕРЕЙ ============ */
+const TOWER_DOORS=5;
+let towerActive=false,towerLevel=0,towerBet=0,towerMult=1,towerMinesPerLevel=1;
 
 function openTower(){
   $('gameTitle').textContent='🏰 БАШНЯ';
@@ -1124,22 +1125,17 @@ function openTower(){
     const wrap=document.createElement('div');
     wrap.id='towerWrap';wrap.className='tower-wrap';
     wrap.innerHTML=`
-      <div class="tower-controls">
+      <div class="mines-controls">
         <div class="mines-row">
           <label>Ставка:</label>
           <input type="number" class="bet-input" id="towerBetInput" value="100" style="flex:1">
           <button class="bet-btn" id="towerBetMax">MAX</button>
         </div>
         <div class="mines-row">
-          <label>Мин:</label>
+          <label>Мин на уровень:</label>
           <button class="mine-opt" data-m="1">1</button>
           <button class="mine-opt" data-m="2">2</button>
           <button class="mine-opt" data-m="3">3</button>
-        </div>
-        <div class="mines-row">
-          <label>Столбцов:</label>
-          <button class="mine-opt" data-c="3">3</button>
-          <button class="mine-opt" data-c="4">4</button>
         </div>
       </div>
       <div class="mines-status">
@@ -1157,17 +1153,14 @@ function openTower(){
     document.querySelectorAll('#towerWrap .mine-opt').forEach(b=>{
       b.addEventListener('click',()=>{
         if(towerActive)return;
-        const group=b.dataset.m?'m':'c';
-        document.querySelectorAll(`#towerWrap .mine-opt[data-${group}]`).forEach(x=>x.classList.remove('active'));
+        document.querySelectorAll('#towerWrap .mine-opt').forEach(x=>x.classList.remove('active'));
         b.classList.add('active');
-        if(b.dataset.m)towerMinesPerLevel=parseInt(b.dataset.m);
-        else towerSelectedCols=parseInt(b.dataset.c);
+        towerMinesPerLevel=parseInt(b.dataset.m);
         sndClick();
       });
     });
     document.querySelector('#towerWrap .mine-opt[data-m="1"]').classList.add('active');
-    document.querySelector('#towerWrap .mine-opt[data-c="3"]').classList.add('active');
-    towerSelectedCols=3;towerMinesPerLevel=1;
+    towerMinesPerLevel=1;
     $('towerBetMax').addEventListener('click',()=>{if(towerActive)return;$('towerBetInput').value=state.balance;sndClick()});
     $('towerStart').addEventListener('click',startTower);
     $('towerCash').addEventListener('click',cashTower);
@@ -1178,10 +1171,8 @@ function openTower(){
   updateTowerUI();
 }
 
-function towerMultiplierFor(level,mines,cols){
-  // Шанс пройти уровень = (cols-mines)/cols
-  const p=(cols-mines)/cols;
-  // Множитель = 1 / p^(level)
+function towerMultiplierFor(level,mines,doors){
+  const p=(doors-mines)/doors;
   return Math.pow(1/p,level);
 }
 
@@ -1194,10 +1185,10 @@ function renderTowerStack(){
     row.dataset.level=lvl;
     if(lvl===towerLevel+1&&towerActive)row.classList.add('active');
     if(lvl<=towerLevel)row.classList.add('done');
-    const mult=towerMultiplierFor(lvl,towerMinesPerLevel,towerSelectedCols);
+    const mult=towerMultiplierFor(lvl,towerMinesPerLevel,TOWER_DOORS);
     row.innerHTML=`<div class="num">${lvl}</div><div class="tower-tiles"></div><div class="mult">×${mult.toFixed(2)}</div>`;
     const tilesWrap=row.querySelector('.tower-tiles');
-    for(let c=0;c<towerSelectedCols;c++){
+    for(let c=0;c<TOWER_DOORS;c++){
       const t=document.createElement('button');
       t.className='tower-tile';
       t.textContent='?';
@@ -1235,15 +1226,13 @@ function startTower(){
 
 function clickTowerTile(lvl,col){
   if(!towerActive||lvl!==towerLevel+1)return;
-  // генерим мины на этом уровне
   const mines=[];
-  const positions=[...Array(towerSelectedCols).keys()];
+  const positions=[...Array(TOWER_DOORS).keys()];
   for(let i=positions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[positions[i],positions[j]]=[positions[j],positions[i]]}
   for(let k=0;k<towerMinesPerLevel;k++)mines.push(positions[k]);
   const isBomb=mines.includes(col);
   const row=document.querySelector(`.tower-level[data-level="${lvl}"]`);
   const tiles=row.querySelectorAll('.tower-tile');
-  // показываем
   tiles.forEach((t,i)=>{
     t.disabled=true;
     if(mines.includes(i)){t.classList.add('boom');t.textContent='💥'}
@@ -1263,7 +1252,7 @@ function clickTowerTile(lvl,col){
     setTimeout(()=>renderTowerStack(),1000);
   }else{
     towerLevel=lvl;
-    towerMult=towerMultiplierFor(towerLevel,towerMinesPerLevel,towerSelectedCols);
+    towerMult=towerMultiplierFor(towerLevel,towerMinesPerLevel,TOWER_DOORS);
     updateTowerUI();
     sndClick();
     if(towerLevel>=9){
