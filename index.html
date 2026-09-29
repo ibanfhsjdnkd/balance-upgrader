@@ -9,8 +9,8 @@
 body{font-family:'Segoe UI',system-ui,sans-serif;background:radial-gradient(circle at 50% 0%,#2a1a4e 0%,#150a2e 50%,#0a0515 100%);color:#fff;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:16px;overflow-x:hidden}
 
 /* АДМИН-КНОПКА */
-.admin-btn{position:fixed;top:12px;right:12px;z-index:100;background:linear-gradient(135deg,#7c3aed,#9333ea);border:2px solid #c084fc;color:#fff;padding:8px 14px;border-radius:12px;cursor:pointer;font-size:14px;font-weight:800;transition:all .2s;box-shadow:0 0 20px rgba(192,132,252,.8),0 0 40px rgba(147,51,234,.5);letter-spacing:1px}
-.admin-btn:hover{transform:scale(1.06);box-shadow:0 0 30px rgba(192,132,252,1),0 0 60px rgba(147,51,234,.8);background:linear-gradient(135deg,#9333ea,#a855f7)}
+.admin-btn{position:fixed;top:12px;right:12px;z-index:100;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7c3aed,#9333ea);border:2px solid #c084fc;border-radius:12px;cursor:pointer;transition:all .2s;box-shadow:0 0 20px rgba(192,132,252,.8),0 0 40px rgba(147,51,234,.5);padding:0;font-size:26px;line-height:1;overflow:hidden}
+.admin-btn:hover{transform:scale(1.08);box-shadow:0 0 30px rgba(192,132,252,1),0 0 60px rgba(147,51,234,.8);background:linear-gradient(135deg,#9333ea,#a855f7)}
 .admin-btn.active{background:linear-gradient(135deg,#a855f7,#c084fc);border-color:#e9d5ff}
 
 .game{width:100%;max-width:560px;padding-bottom:20px}
@@ -26,19 +26,24 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 
 /* КРУГОВОЕ КОЛЕСО */
 .wheel-stage{position:relative;width:100%;max-width:340px;margin:10px auto 14px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
-.wheel-svg{width:100%;height:100%;filter:drop-shadow(0 0 30px rgba(124,58,237,.5))}
-.wheel-rotor{transform-origin:50% 50%;transition:transform 5s cubic-bezier(.15,.9,.15,1)}
-.wheel-seg-win{fill:url(#gradWin)}
-.wheel-seg-lose{fill:url(#gradLose)}
-.wheel-outline{fill:none;stroke:rgba(192,132,252,.7);stroke-width:2}
-.wheel-center{fill:#150a2e;stroke:rgba(192,132,252,.6);stroke-width:2}
-.wheel-center-text{fill:#e9d5ff;font-size:16px;font-weight:900;text-anchor:middle;dominant-baseline:middle;font-family:inherit;letter-spacing:1px}
+.wheel-svg{width:100%;height:100%;filter:drop-shadow(0 0 30px rgba(124,58,237,.6))}
+.wheel-rotor{transform-origin:50% 50%}
+.wheel-seg-win{fill:url(#gradWin);stroke:rgba(134,239,172,.5);stroke-width:0.8}
+.wheel-seg-lose{fill:url(#gradLose);stroke:rgba(252,165,165,.5);stroke-width:0.8}
+.wheel-ring-outer{fill:none;stroke:url(#gradRing);stroke-width:3}
+.wheel-ring-inner{fill:none;stroke:rgba(192,132,252,.25);stroke-width:1}
+.wheel-tick{stroke:rgba(233,213,255,.4);stroke-width:1}
+.wheel-tick.major{stroke:rgba(233,213,255,.85);stroke-width:1.5}
+.wheel-center{fill:url(#gradCenter);stroke:rgba(192,132,252,.8);stroke-width:2;filter:drop-shadow(0 0 12px rgba(124,58,237,.8))}
+.wheel-center-text{fill:#e9d5ff;font-size:18px;font-weight:900;text-anchor:middle;dominant-baseline:middle;font-family:inherit;letter-spacing:1px;text-shadow:0 0 12px rgba(192,132,252,1)}
+.wheel-center-sub{fill:#a855f7;font-size:7px;font-weight:700;text-anchor:middle;dominant-baseline:middle;font-family:inherit;letter-spacing:1px}
 
 /* СТРЕЛКА */
-.wheel-arrow{position:absolute;top:50%;left:50%;width:calc(50% - 12px);height:6px;transform-origin:0 50%;transform:translate(0,-50%) rotate(0deg);pointer-events:none;z-index:5}
-.wheel-arrow::after{content:'';position:absolute;right:-2px;top:50%;transform:translateY(-50%);width:0;height:0;border:12px solid transparent;border-left-color:#c084fc;filter:drop-shadow(0 0 12px rgba(192,132,252,1)) drop-shadow(0 0 24px rgba(168,85,247,.8))}
-.wheel-arrow::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:3px;background:linear-gradient(90deg,transparent,#c084fc);border-radius:2px}
-.wheel-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#c084fc,#7c3aed);box-shadow:0 0 20px rgba(192,132,252,1),0 0 40px rgba(168,85,247,.7);z-index:6;border:2px solid #e9d5ff}
+.wheel-arrow{position:absolute;top:50%;left:50%;width:calc(50% - 10px);height:8px;transform-origin:0 50%;transform:translate(0,-50%) rotate(0deg);pointer-events:none;z-index:5;transition:transform 5s cubic-bezier(.15,.9,.15,1)}
+.wheel-arrow-body{position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:3px;background:linear-gradient(90deg,rgba(192,132,252,0),#c084fc 60%,#e9d5ff);border-radius:2px;box-shadow:0 0 10px rgba(192,132,252,.9)}
+.wheel-arrow-tip{position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:0;height:0;border:14px solid transparent;border-left-color:#e9d5ff;filter:drop-shadow(0 0 12px rgba(192,132,252,1)) drop-shadow(0 0 24px rgba(168,85,247,.8))}
+.wheel-arrow-tip::after{content:'';position:absolute;left:-16px;top:-8px;width:0;height:0;border:8px solid transparent;border-left-color:#c084fc}
+.wheel-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e9d5ff,#c084fc 40%,#7c3aed 80%);box-shadow:0 0 20px rgba(192,132,252,1),0 0 40px rgba(168,85,247,.7),inset 0 0 8px rgba(255,255,255,.4);z-index:6;border:2px solid #e9d5ff}
 
 /* РЕЗУЛЬТАТ */
 .result-display{text-align:center;padding:12px;background:rgba(20,10,40,.6);border-radius:14px;margin-bottom:12px;border:1px solid rgba(168,85,247,.3);transition:all .3s;min-height:70px;display:flex;flex-direction:column;justify-content:center;gap:2px}
@@ -51,7 +56,7 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .result-display.win .result-sub{color:#86efac}
 .result-display.lose .result-sub{color:#fca5a5}
 
-/* ПАНЕЛЬ СТАВКИ (СНИЗУ) */
+/* ПАНЕЛЬ */
 .panel{background:linear-gradient(135deg,rgba(168,85,247,.1),rgba(124,58,237,.05));border:1px solid rgba(168,85,247,.35);border-radius:16px;padding:14px;margin-bottom:12px}
 .panel-title{font-size:11px;letter-spacing:3px;color:#c084fc;text-transform:uppercase;margin-bottom:10px;text-align:center;font-weight:700}
 
@@ -67,11 +72,13 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .chance-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .chance-header span:first-child{font-size:11px;letter-spacing:2px;color:#a855f7;text-transform:uppercase;font-weight:700}
 .chance-header span:last-child{font-size:18px;font-weight:900;color:#c084fc;text-shadow:0 0 12px rgba(192,132,252,.8)}
-.chance-slider{width:100%;height:34px;background:transparent;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;margin-bottom:10px}
+.chance-slider{width:100%;height:34px;background:transparent;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;margin-bottom:10px;transition:opacity .3s}
 .chance-slider::-webkit-slider-runnable-track{height:34px;border-radius:10px;background:linear-gradient(90deg,#ef4444 0%,#ef4444 var(--pos),#22c55e var(--pos),#22c55e 100%);border:2px solid rgba(168,85,247,.5);box-shadow:inset 0 2px 10px rgba(0,0,0,.5)}
 .chance-slider::-moz-range-track{height:34px;border-radius:10px;background:linear-gradient(90deg,#ef4444 0%,#ef4444 var(--pos),#22c55e var(--pos),#22c55e 100%);border:2px solid rgba(168,85,247,.5)}
 .chance-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:40px;border-radius:8px;background:linear-gradient(180deg,#e9d5ff,#c084fc,#7c3aed);border:2px solid #fff;cursor:grab;margin-top:-5px;box-shadow:0 0 16px rgba(192,132,252,1)}
 .chance-slider::-moz-range-thumb{width:22px;height:40px;border-radius:8px;background:linear-gradient(180deg,#e9d5ff,#c084fc,#7c3aed);border:2px solid #fff;cursor:grab;box-shadow:0 0 16px rgba(192,132,252,1)}
+.chance-slider:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.4)}
+.chance-slider:disabled::-webkit-slider-thumb{cursor:not-allowed;box-shadow:0 0 6px rgba(120,80,180,.4)}
 
 .payout-preview{display:flex;justify-content:space-between;gap:8px;margin-bottom:14px;text-align:center}
 .payout-cell{flex:1;background:rgba(20,10,40,.6);border:1px solid rgba(168,85,247,.3);border-radius:10px;padding:8px 4px}
@@ -81,13 +88,11 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .payout-cell.win-cell .v{color:#22c55e;text-shadow:0 0 10px rgba(34,197,94,.6)}
 .payout-cell.lose-cell .v{color:#ef4444}
 
-/* ГЛАВНАЯ КНОПКА */
 .btn-main{width:100%;padding:16px;font-size:17px;font-weight:800;color:#e9d5ff;border:2px solid rgba(147,51,234,.5);border-radius:14px;cursor:pointer;margin-bottom:8px;transition:all .15s;letter-spacing:2px;background:linear-gradient(135deg,#4c1d95,#3b1578,#2e1065);box-shadow:0 8px 24px rgba(76,29,149,.5),inset 0 1px 0 rgba(192,132,252,.15)}
 .btn-main:hover:not(:disabled){background:linear-gradient(135deg,#5b21b6,#4c1d95,#3b1578);box-shadow:0 10px 32px rgba(107,33,168,.7)}
 .btn-main:active:not(:disabled){transform:scale(.97)}
 .btn-main:disabled{opacity:.4;cursor:not-allowed}
 
-/* ЛОГ */
 .feed-title{font-size:11px;letter-spacing:3px;color:#a855f7;text-transform:uppercase;margin:14px 4px 8px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
 .feed-title span:last-child{color:#7c3aed;font-size:10px}
 .feed{height:150px;overflow-y:auto;background:rgba(20,10,40,.6);border:1px solid rgba(168,85,247,.35);border-radius:14px;padding:8px;scroll-behavior:smooth}
@@ -140,7 +145,27 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 </head>
 <body>
 
-<button class="admin-btn" id="adminBtn">🛡️⭐</button>
+<!-- ИКОНКА АДМИНКИ: щит со звездой внутри -->
+<button class="admin-btn" id="adminBtn" aria-label="Админ-панель">
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e9d5ff"/>
+        <stop offset="60%" stop-color="#c084fc"/>
+        <stop offset="100%" stop-color="#a855f7"/>
+      </linearGradient>
+      <linearGradient id="starGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#fff7d6"/>
+        <stop offset="50%" stop-color="#ffd54a"/>
+        <stop offset="100%" stop-color="#ffb300"/>
+      </linearGradient>
+    </defs>
+    <path d="M16 2 L28 6 V15 C28 22 22 28 16 30 C10 28 4 22 4 15 V6 Z"
+          fill="url(#shieldGrad)" stroke="#e9d5ff" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M16 9 L17.9 14.2 L23.4 14.4 L19 17.9 L20.5 23.3 L16 20.2 L11.5 23.3 L13 17.9 L8.6 14.4 L14.1 14.2 Z"
+          fill="url(#starGrad)" stroke="#7c3aed" stroke-width="0.6" stroke-linejoin="round"/>
+  </svg>
+</button>
 
 <div class="admin-panel" id="adminPanel">
   <h3>🛡️ Админ-панель</h3>
@@ -172,28 +197,52 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
     <div class="balance" id="balance">0</div>
   </div>
 
-  <!-- КРУГОВОЕ КОЛЕСО -->
   <div class="wheel-stage">
     <div class="wheel-hub"></div>
-    <div class="wheel-arrow" id="wheelArrow"></div>
+    <div class="wheel-arrow" id="wheelArrow">
+      <div class="wheel-arrow-body"></div>
+      <div class="wheel-arrow-tip"></div>
+    </div>
     <svg class="wheel-svg" viewBox="0 0 200 200">
       <defs>
-        <linearGradient id="gradWin" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#22c55e"/>
+        <linearGradient id="gradWin" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#34d399"/>
+          <stop offset="55%" stop-color="#22c55e"/>
           <stop offset="100%" stop-color="#15803d"/>
         </linearGradient>
-        <linearGradient id="gradLose" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ef4444"/>
+        <linearGradient id="gradLose" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f87171"/>
+          <stop offset="55%" stop-color="#ef4444"/>
           <stop offset="100%" stop-color="#991b1b"/>
         </linearGradient>
+        <linearGradient id="gradRing" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#c084fc"/>
+          <stop offset="50%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#c084fc"/>
+        </linearGradient>
+        <radialGradient id="gradCenter" cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stop-color="#3b1578"/>
+          <stop offset="100%" stop-color="#1a0d33"/>
+        </radialGradient>
       </defs>
+
+      <!-- Деления по кругу -->
+      <g id="ticksGroup"></g>
+
+      <!-- Секторы -->
       <g class="wheel-rotor" id="wheelRotor">
         <path class="wheel-seg-lose" id="segLose" d=""/>
         <path class="wheel-seg-win" id="segWin" d=""/>
-        <circle class="wheel-outline" cx="100" cy="100" r="85"/>
       </g>
+
+      <!-- Кольца -->
+      <circle class="wheel-ring-outer" cx="100" cy="100" r="90"/>
+      <circle class="wheel-ring-inner" cx="100" cy="100" r="45"/>
+
+      <!-- Центр -->
       <circle class="wheel-center" cx="100" cy="100" r="42"/>
-      <text class="wheel-center-text" id="centerText" x="100" y="100">50%</text>
+      <text class="wheel-center-text" id="centerText" x="100" y="95">50%</text>
+      <text class="wheel-center-sub" id="centerSub" x="100" y="110">CHANCE</text>
     </svg>
   </div>
 
@@ -202,7 +251,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
     <div class="result-sub" id="resultSub">Ставь и крути</div>
   </div>
 
-  <!-- ПАНЕЛЬ СТАВКИ (СНИЗУ) -->
   <div class="panel">
     <div class="panel-title">🎯 Ставка и шанс</div>
 
@@ -276,7 +324,7 @@ function parseBet(str){
 }
 
 /* ============ НАСТРОЙКИ ============ */
-const SAVE_KEY='upgrader_v4';
+const SAVE_KEY='upgrader_v5';
 const HOUSE_EDGE=0.03;
 const ADMIN_CODE='IvanAdmin0610';
 const BONUS_AMOUNT=1000;
@@ -289,370 +337,4 @@ function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(state))}catch(e
 /* ============ ЛОГИКА ============ */
 let spinning=false;
 let isAdmin=false;
-let arrowAngle=0;
-
-function multFromChance(chance){return (100/chance)*(1-HOUSE_EDGE)}
-
-/* ============ UI ============ */
-const $balance=document.getElementById('balance');
-const $betInput=document.getElementById('betInput');
-const $chanceSlider=document.getElementById('chanceSlider');
-const $chanceValue=document.getElementById('chanceValue');
-const $previewMult=document.getElementById('previewMult');
-const $previewWin=document.getElementById('previewWin');
-const $previewLose=document.getElementById('previewLose');
-const $actionBtn=document.getElementById('actionBtn');
-const $resultDisplay=document.getElementById('resultDisplay');
-const $resultMain=document.getElementById('resultMain');
-const $resultSub=document.getElementById('resultSub');
-const $feed=document.getElementById('feed');
-const $feedCount=document.getElementById('feedCount');
-const $wheelArrow=document.getElementById('wheelArrow');
-const $wheelRotor=document.getElementById('wheelRotor');
-const $segWin=document.getElementById('segWin');
-const $segLose=document.getElementById('segLose');
-const $centerText=document.getElementById('centerText');
-
-let feedCount=0;
-function addFeed(type,text,val){
-  const empty=$feed.querySelector('.feed-empty');
-  if(empty)empty.remove();
-  const el=document.createElement('div');
-  el.className='feed-item '+type;
-  el.innerHTML=`<span>${text}</span>${val?`<span class="val">${val}</span>`:''}`;
-  $feed.appendChild(el);
-  feedCount++;
-  while($feed.children.length>50)$feed.removeChild($feed.firstChild);
-  $feedCount.textContent=feedCount;
-  $feed.scrollTop=$feed.scrollHeight;
-}
-
-function updateBalance(){
-  const prev=parseFloat($balance.dataset.raw||'0');
-  $balance.textContent=fmt(state.balance);
-  $balance.dataset.raw=state.balance;
-  if(state.balance>prev){$balance.classList.add('pop');setTimeout(()=>$balance.classList.remove('pop'),120)}
-}
-
-/* ============ РИСУЕМ ПИРОГ ============ */
-// Шанс выигрыша — зелёный сектор от -90° по часовой стрелке.
-// Проигрыш — красный, остальное.
-function drawWheel(chance){
-  const R=85, cx=100, cy=100;
-  const winAngle=chance/100*360;
-
-  // Начинаем сверху (-90°) и идём по часовой
-  const startAngle=-90;
-  const winEnd=startAngle+winAngle;
-  const loseEnd=startAngle+360;
-
-  const winPath=arcPath(cx,cy,R,startAngle,winEnd);
-  const losePath=arcPath(cx,cy,R,winEnd,loseEnd);
-
-  $segWin.setAttribute('d',winPath);
-  $segLose.setAttribute('d',losePath);
-  $centerText.textContent=chance+'%';
-}
-
-function polar(cx,cy,r,deg){
-  const rad=(deg-90)*Math.PI/180;
-  return {x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)};
-}
-function arcPath(cx,cy,r,a1,a2){
-  // Обрабатываем полный круг
-  if(a2-a1>=359.999){
-    return `M ${cx} ${cy-r} A ${r} ${r} 0 1 1 ${cx-0.01} ${cy-r} Z`;
-  }
-  const p1=polar(cx,cy,r,a1);
-  const p2=polar(cx,cy,r,a2);
-  const large=a2-a1>180?1:0;
-  return `M ${cx} ${cy} L ${p1.x} ${p1.y} A ${r} ${r} 0 ${large} 1 ${p2.x} ${p2.y} Z`;
-}
-
-function updatePreview(){
-  const bet=parseBet($betInput.value)||0;
-  const chance=parseInt($chanceSlider.value);
-  const mult=multFromChance(chance);
-  const win=Math.floor(bet*mult);
-  $chanceValue.textContent=chance+'%';
-  $previewMult.textContent=mult.toFixed(2)+'×';
-  $previewWin.textContent=fmt(win);
-  $previewLose.textContent=fmt(bet);
-  const pos=((chance-1)/94*100);
-  $chanceSlider.style.setProperty('--pos',pos+'%');
-  state.lastBet=bet;
-  state.lastChance=chance;
-  drawWheel(chance);
-}
-
-function toast(msg,type){
-  const t=document.createElement('div');
-  t.className='toast'+(type?' '+type:'');
-  t.textContent=msg;
-  document.body.appendChild(t);
-  requestAnimationFrame(()=>t.classList.add('show'));
-  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},1600);
-}
-
-/* ============ БОНУС ПРИ НУЛЕ ============ */
-function checkBonus(){
-  if(state.balance<=0){
-    state.balance+=BONUS_AMOUNT;
-    updateBalance();
-    save();
-    toast('💜 Не волнуйся, не все потеряно!','win');
-    addFeed('info','💜 Не волнуйся, не все потеряно!','+'+fmt(BONUS_AMOUNT));
-    const box=document.querySelector('.balance-box').getBoundingClientRect();
-    const f=document.createElement('div');
-    f.style.position='fixed';
-    f.style.left=(box.left+box.width/2)+'px';
-    f.style.top=(box.top+box.height/2)+'px';
-    f.style.transform='translate(-50%,-50%)';
-    f.style.fontSize='20px';
-    f.style.fontWeight='900';
-    f.style.color='#c084fc';
-    f.style.textShadow='0 0 20px rgba(192,132,252,1),0 0 40px rgba(168,85,247,.8)';
-    f.style.pointerEvents='none';
-    f.style.zIndex='999';
-    f.style.animation='floatUp 2s ease-out forwards';
-    f.textContent='+'+fmt(BONUS_AMOUNT)+' 💜';
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),2000);
-  }
-}
-
-/* ============ КРУЧЕНИЕ СТРЕЛКИ ============ */
-// Стрелка делает N полных оборотов и останавливается в нужном секторе.
-// Сектор победы: chance% от -90° по часовой. Стрелка должна попасть в него при выигрыше.
-// Стрелка: угол 0° = вправо (по оси X). Сектор победы: от -90° (верх) по часовой.
-// Переводим координаты: реальный угол в градусах от направления "вправо" по часовой = svg_angle - 90 (mod 360)... упростим.
-// Стрелка в CSS rotate: 0° = вправо, положительное = по часовой (CSS так делает).
-
-// Диапазон углов победы в CSS-координатах (0° вправо, по часовой):
-// SVG startAngle = -90° (то есть верх). В CSS "вправо" = 0. Верх = -90.
-// SVG идёт по часовой. Значит: CSS угол = SVG угол (в обеих -90 = верх, 0 = право).
-// Только CSS rotate по часовой при положительном значении — совпадает со SVG.
-// Итого: сектор победы в CSS: от -90° до (-90 + chance*3.6)°.
-
-function spinArrow(win){
-  const chance=parseInt($chanceSlider.value);
-  const winStart=-90;
-  const winEnd=-90+chance/100*360;
-  const loseStart=winEnd;
-  const loseEnd=-90+360;
-
-  let targetAngle;
-  if(win){
-    // Случайный угол в середине зелёного сектора с запасом 10% от сектора
-    const range=winEnd-winStart;
-    const pad=range*0.1;
-    targetAngle=winStart+pad+Math.random()*(range-pad*2);
-  }else{
-    const range=loseEnd-loseStart;
-    const pad=range>20?range*0.05:0;
-    targetAngle=loseStart+pad+Math.random()*(range-pad*2);
-    if(range<1)targetAngle=loseStart+range/2;
-  }
-
-  // Крутим на 5 полных оборотов + остаток до targetAngle
-  const baseFullTurns=5*360;
-  // Текущий угол стрелки — приводим к ближайшему эквиваленту targetAngle + целое * 360
-  const currentNorm=((arrowAngle%360)+360)%360;
-  const targetNorm=((targetAngle%360)+360)%360;
-  let delta=targetNorm-currentNorm;
-  if(delta<0)delta+=360;
-  const totalRotation=baseFullTurns+delta;
-
-  arrowAngle+=totalRotation;
-  $wheelArrow.style.transition='transform 5s cubic-bezier(.15,.9,.15,1)';
-  $wheelArrow.style.transform=`translate(0,-50%) rotate(${arrowAngle}deg)`;
-
-  return new Promise(res=>setTimeout(res,5000));
-}
-
-/* ============ ИГРА ============ */
-async function play(){
-  if(spinning)return;
-  const bet=parseBet($betInput.value);
-  if(isNaN(bet)||bet<=0){toast('Некорректная ставка','warn');return}
-  if(bet>state.balance){toast('Недостаточно средств','warn');addFeed('lose','❌ Не хватило на ставку','-'+fmt(bet-state.balance));return}
-
-  const chance=parseInt($chanceSlider.value);
-  const mult=multFromChance(chance);
-  spinning=true;
-  $actionBtn.disabled=true;
-  $resultDisplay.className='result-display';
-  $resultMain.textContent='🎰';
-  $resultSub.textContent='Крутится...';
-
-  const win=Math.random()*100<chance;
-
-  state.balance-=bet;
-  updateBalance();
-
-  await spinArrow(win);
-
-  if(win){
-    const winAmount=Math.floor(bet*mult);
-    const profit=winAmount-bet;
-    state.balance+=winAmount;
-    updateBalance();
-    $resultDisplay.className='result-display win';
-    $resultMain.textContent='+'+fmt(profit);
-    $resultSub.textContent=`WIN ×${mult.toFixed(2)} (шанс ${chance}%)`;
-    addFeed('win',`✅ ×${mult.toFixed(2)} (${chance}%)`,'+'+fmt(profit));
-    toast('Победа! +'+fmt(profit),'win');
-  }else{
-    $resultDisplay.className='result-display lose';
-    $resultMain.textContent='-'+fmt(bet);
-    $resultSub.textContent=`BUST (шанс ${chance}%)`;
-    addFeed('lose',`💀 Проигрыш (${chance}%)`,'-'+fmt(bet));
-    toast('Проигрыш -'+fmt(bet),'warn');
-  }
-
-  spinning=false;
-  $actionBtn.disabled=false;
-  save();
-  checkBonus();
-}
-
-/* ============ АДМИН-ПАНЕЛЬ ============ */
-const $adminBtn=document.getElementById('adminBtn');
-const $adminPanel=document.getElementById('adminPanel');
-const $adminLogin=document.getElementById('adminLogin');
-const $adminContent=document.getElementById('adminContent');
-const $adminCode=document.getElementById('adminCode');
-
-$adminBtn.addEventListener('click',()=>{
-  $adminPanel.classList.toggle('show');
-  $adminBtn.classList.toggle('active');
-  if(!isAdmin){
-    $adminLogin.style.display='block';
-    $adminContent.style.display='none';
-  }else{
-    $adminLogin.style.display='none';
-    $adminContent.style.display='block';
-  }
-});
-
-document.getElementById('adminClose').addEventListener('click',()=>{
-  $adminPanel.classList.remove('show');
-  $adminBtn.classList.remove('active');
-});
-
-document.getElementById('adminLoginBtn').addEventListener('click',()=>{
-  const code=$adminCode.value.trim();
-  if(code===ADMIN_CODE){
-    isAdmin=true;
-    $adminLogin.style.display='none';
-    $adminContent.style.display='block';
-    $adminCode.value='';
-    toast('✅ Доступ разрешён','win');
-    addFeed('admin','🛡️⭐ Админ вошёл в систему','');
-  }else{
-    toast('❌ Неверный код','warn');
-    $adminCode.value='';
-  }
-});
-$adminCode.addEventListener('keydown',(e)=>{
-  if(e.key==='Enter')document.getElementById('adminLoginBtn').click();
-});
-
-document.getElementById('adminLogout').addEventListener('click',()=>{
-  isAdmin=false;
-  $adminLogin.style.display='block';
-  $adminContent.style.display='none';
-  toast('🚪 Вы вышли из админки');
-});
-
-document.getElementById('adminAdd').addEventListener('click',()=>{
-  if(!isAdmin)return;
-  const amount=parseBet(document.getElementById('adminAmount').value);
-  if(isNaN(amount)||amount<=0){toast('Некорректная сумма','warn');return}
-  state.balance+=amount;
-  updateBalance();
-  save();
-  addFeed('admin','💰 Админ пополнил баланс','+'+fmt(amount));
-  toast('+'+fmt(amount)+' добавлено','win');
-});
-
-document.getElementById('adminMax').addEventListener('click',()=>{
-  if(!isAdmin)return;
-  state.balance+=1e7;
-  updateBalance();
-  save();
-  addFeed('admin','💰 Админ пополнил баланс','+10M');
-  toast('+10M добавлено','win');
-});
-
-document.getElementById('adminBillion').addEventListener('click',()=>{
-  if(!isAdmin)return;
-  state.balance+=1e9;
-  updateBalance();
-  save();
-  addFeed('admin','💰 Админ пополнил баланс','+1B');
-  toast('+1B добавлено','win');
-});
-
-document.getElementById('adminZero').addEventListener('click',()=>{
-  if(!isAdmin)return;
-  if(!confirm('Обнулить баланс?'))return;
-  state.balance=0;
-  updateBalance();
-  save();
-  addFeed('admin','🗑 Админ обнулил баланс','0');
-  toast('Баланс обнулён','warn');
-  checkBonus();
-});
-
-/* ============ СОБЫТИЯ ============ */
-$actionBtn.addEventListener('click',play);
-$betInput.addEventListener('input',updatePreview);
-$chanceSlider.addEventListener('input',updatePreview);
-
-document.getElementById('betHalf').addEventListener('click',()=>{
-  if(spinning)return;
-  const v=parseBet($betInput.value);
-  if(!isNaN(v))$betInput.value=Math.max(1,Math.floor(v/2));
-  updatePreview();
-});
-document.getElementById('betDouble').addEventListener('click',()=>{
-  if(spinning)return;
-  const v=parseBet($betInput.value);
-  if(!isNaN(v))$betInput.value=Math.min(state.balance,Math.floor(v*2));
-  updatePreview();
-});
-document.querySelectorAll('.bet-quick button').forEach(b=>{
-  b.addEventListener('click',()=>{
-    if(spinning)return;
-    $betInput.value=b.dataset.q;
-    updatePreview();
-  });
-});
-
-document.getElementById('resetBtn').addEventListener('click',()=>{
-  if(!confirm('Точно сбросить весь прогресс?'))return;
-  localStorage.removeItem(SAVE_KEY);
-  state={balance:1000,lastBet:100,lastChance:50};
-  $feed.innerHTML='<div class="feed-empty">Прогресс сброшен. Баланс: 1K</div>';
-  feedCount=0;$feedCount.textContent='0';
-  addFeed('info','🔄 Игра сброшена. Начальный баланс: '+fmt(1000),'');
-  updateBalance();
-  save();
-});
-
-/* ============ СТАРТ ============ */
-load();
-$betInput.value=state.lastBet;
-$chanceSlider.value=state.lastChance;
-updateBalance();
-updatePreview();
-addFeed('info','🎮 Выбирай ставку и шанс. Удачи!','');
-checkBonus();
-</script>
-
-<style>
-@keyframes floatUp{to{transform:translate(-50%,-150%) scale(1.3);opacity:0}}
-</style>
-</body>
-      </html>
+let arrow
