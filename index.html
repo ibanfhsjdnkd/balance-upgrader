@@ -8,15 +8,13 @@
 *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:radial-gradient(circle at 50% 0%,#2a1a4e 0%,#150a2e 50%,#0a0515 100%);color:#fff;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:16px;overflow-x:hidden}
 
-/* АДМИН-КНОПКА */
-.admin-btn{position:fixed;top:12px;right:12px;z-index:100;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7c3aed,#9333ea);border:2px solid #c084fc;border-radius:12px;cursor:pointer;transition:all .2s;box-shadow:0 0 20px rgba(192,132,252,.8),0 0 40px rgba(147,51,234,.5);padding:0;font-size:26px;line-height:1;overflow:hidden}
+.admin-btn{position:fixed;top:12px;right:12px;z-index:100;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7c3aed,#9333ea);border:2px solid #c084fc;border-radius:12px;cursor:pointer;transition:all .2s;box-shadow:0 0 20px rgba(192,132,252,.8),0 0 40px rgba(147,51,234,.5);padding:0}
 .admin-btn:hover{transform:scale(1.08);box-shadow:0 0 30px rgba(192,132,252,1),0 0 60px rgba(147,51,234,.8);background:linear-gradient(135deg,#9333ea,#a855f7)}
 .admin-btn.active{background:linear-gradient(135deg,#a855f7,#c084fc);border-color:#e9d5ff}
 
 .game{width:100%;max-width:560px;padding-bottom:20px}
 h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradient(90deg,#c084fc,#a855f7,#7c3aed,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 14px rgba(168,85,247,.6));letter-spacing:2px}
 
-/* БАЛАНС */
 .balance-box{text-align:center;padding:12px;background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(124,58,237,.1));border:1px solid rgba(168,85,247,.4);border-radius:16px;margin-bottom:12px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(124,58,237,.25)}
 .balance-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(192,132,252,.25),transparent 30%);animation:spin 5s linear infinite;pointer-events:none}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -24,7 +22,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .balance{font-size:30px;font-weight:800;color:#e9d5ff;text-shadow:0 0 24px rgba(192,132,252,.9),0 0 40px rgba(124,58,237,.5);margin:2px 0;position:relative;transition:transform .12s;word-break:break-all;font-variant-numeric:tabular-nums}
 .balance.pop{transform:scale(1.1)}
 
-/* КРУГОВОЕ КОЛЕСО */
 .wheel-stage{position:relative;width:100%;max-width:340px;margin:10px auto 14px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
 .wheel-svg{width:100%;height:100%;filter:drop-shadow(0 0 30px rgba(124,58,237,.6))}
 .wheel-rotor{transform-origin:50% 50%}
@@ -34,18 +31,15 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .wheel-ring-inner{fill:none;stroke:rgba(192,132,252,.25);stroke-width:1}
 .wheel-tick{stroke:rgba(233,213,255,.4);stroke-width:1}
 .wheel-tick.major{stroke:rgba(233,213,255,.85);stroke-width:1.5}
-.wheel-center{fill:url(#gradCenter);stroke:rgba(192,132,252,.8);stroke-width:2;filter:drop-shadow(0 0 12px rgba(124,58,237,.8))}
-.wheel-center-text{fill:#e9d5ff;font-size:18px;font-weight:900;text-anchor:middle;dominant-baseline:middle;font-family:inherit;letter-spacing:1px;text-shadow:0 0 12px rgba(192,132,252,1)}
+.wheel-center{fill:url(#gradCenter);stroke:rgba(192,132,252,.8);stroke-width:2}
+.wheel-center-text{fill:#e9d5ff;font-size:18px;font-weight:900;text-anchor:middle;dominant-baseline:middle;font-family:inherit;letter-spacing:1px}
 .wheel-center-sub{fill:#a855f7;font-size:7px;font-weight:700;text-anchor:middle;dominant-baseline:middle;font-family:inherit;letter-spacing:1px}
 
-/* СТРЕЛКА */
 .wheel-arrow{position:absolute;top:50%;left:50%;width:calc(50% - 10px);height:8px;transform-origin:0 50%;transform:translate(0,-50%) rotate(0deg);pointer-events:none;z-index:5;transition:transform 5s cubic-bezier(.15,.9,.15,1)}
 .wheel-arrow-body{position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:3px;background:linear-gradient(90deg,rgba(192,132,252,0),#c084fc 60%,#e9d5ff);border-radius:2px;box-shadow:0 0 10px rgba(192,132,252,.9)}
-.wheel-arrow-tip{position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:0;height:0;border:14px solid transparent;border-left-color:#e9d5ff;filter:drop-shadow(0 0 12px rgba(192,132,252,1)) drop-shadow(0 0 24px rgba(168,85,247,.8))}
-.wheel-arrow-tip::after{content:'';position:absolute;left:-16px;top:-8px;width:0;height:0;border:8px solid transparent;border-left-color:#c084fc}
+.wheel-arrow-tip{position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:0;height:0;border:14px solid transparent;border-left-color:#e9d5ff;filter:drop-shadow(0 0 12px rgba(192,132,252,1))}
 .wheel-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e9d5ff,#c084fc 40%,#7c3aed 80%);box-shadow:0 0 20px rgba(192,132,252,1),0 0 40px rgba(168,85,247,.7),inset 0 0 8px rgba(255,255,255,.4);z-index:6;border:2px solid #e9d5ff}
 
-/* РЕЗУЛЬТАТ */
 .result-display{text-align:center;padding:12px;background:rgba(20,10,40,.6);border-radius:14px;margin-bottom:12px;border:1px solid rgba(168,85,247,.3);transition:all .3s;min-height:70px;display:flex;flex-direction:column;justify-content:center;gap:2px}
 .result-display.win{background:linear-gradient(135deg,rgba(34,197,94,.3),rgba(34,197,94,.1));border-color:#22c55e;box-shadow:0 0 30px rgba(34,197,94,.6)}
 .result-display.lose{background:linear-gradient(135deg,rgba(239,68,68,.3),rgba(239,68,68,.1));border-color:#ef4444;box-shadow:0 0 30px rgba(239,68,68,.6)}
@@ -56,7 +50,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .result-display.win .result-sub{color:#86efac}
 .result-display.lose .result-sub{color:#fca5a5}
 
-/* ПАНЕЛЬ */
 .panel{background:linear-gradient(135deg,rgba(168,85,247,.1),rgba(124,58,237,.05));border:1px solid rgba(168,85,247,.35);border-radius:16px;padding:14px;margin-bottom:12px}
 .panel-title{font-size:11px;letter-spacing:3px;color:#c084fc;text-transform:uppercase;margin-bottom:10px;text-align:center;font-weight:700}
 
@@ -78,7 +71,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .chance-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:40px;border-radius:8px;background:linear-gradient(180deg,#e9d5ff,#c084fc,#7c3aed);border:2px solid #fff;cursor:grab;margin-top:-5px;box-shadow:0 0 16px rgba(192,132,252,1)}
 .chance-slider::-moz-range-thumb{width:22px;height:40px;border-radius:8px;background:linear-gradient(180deg,#e9d5ff,#c084fc,#7c3aed);border:2px solid #fff;cursor:grab;box-shadow:0 0 16px rgba(192,132,252,1)}
 .chance-slider:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.4)}
-.chance-slider:disabled::-webkit-slider-thumb{cursor:not-allowed;box-shadow:0 0 6px rgba(120,80,180,.4)}
 
 .payout-preview{display:flex;justify-content:space-between;gap:8px;margin-bottom:14px;text-align:center}
 .payout-cell{flex:1;background:rgba(20,10,40,.6);border:1px solid rgba(168,85,247,.3);border-radius:10px;padding:8px 4px}
@@ -120,7 +112,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 .toast.warn{background:linear-gradient(135deg,#ef4444,#b91c1c);border-color:rgba(252,165,165,.6)}
 .toast.win{background:linear-gradient(135deg,#22c55e,#15803d);border-color:rgba(134,239,172,.6)}
 
-/* АДМИН-ПАНЕЛЬ */
 .admin-panel{position:fixed;top:64px;right:12px;width:290px;max-width:calc(100vw - 24px);background:rgba(20,10,40,.98);border:2px solid rgba(168,85,247,.6);border-radius:14px;padding:16px;z-index:99;box-shadow:0 12px 40px rgba(0,0,0,.8),0 0 30px rgba(168,85,247,.4);backdrop-filter:blur(10px);transform:translateY(-20px) scale(.95);opacity:0;pointer-events:none;transition:all .25s}
 .admin-panel.show{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
 .admin-panel h3{font-size:13px;color:#e9d5ff;text-align:center;margin-bottom:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;text-shadow:0 0 12px rgba(192,132,252,.8)}
@@ -145,7 +136,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 </head>
 <body>
 
-<!-- ИКОНКА АДМИНКИ: щит со звездой внутри -->
 <button class="admin-btn" id="adminBtn" aria-label="Админ-панель">
   <svg viewBox="0 0 32 32" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -225,21 +215,13 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
           <stop offset="100%" stop-color="#1a0d33"/>
         </radialGradient>
       </defs>
-
-      <!-- Деления по кругу -->
       <g id="ticksGroup"></g>
-
-      <!-- Секторы -->
       <g class="wheel-rotor" id="wheelRotor">
         <path class="wheel-seg-lose" id="segLose" d=""/>
         <path class="wheel-seg-win" id="segWin" d=""/>
       </g>
-
-      <!-- Кольца -->
       <circle class="wheel-ring-outer" cx="100" cy="100" r="90"/>
       <circle class="wheel-ring-inner" cx="100" cy="100" r="45"/>
-
-      <!-- Центр -->
       <circle class="wheel-center" cx="100" cy="100" r="42"/>
       <text class="wheel-center-text" id="centerText" x="100" y="95">50%</text>
       <text class="wheel-center-sub" id="centerSub" x="100" y="110">CHANCE</text>
@@ -253,7 +235,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
 
   <div class="panel">
     <div class="panel-title">🎯 Ставка и шанс</div>
-
     <div class="bet-row">
       <button class="bet-btn" id="betHalf">½</button>
       <input type="number" class="bet-input" id="betInput" value="100" min="1" step="1">
@@ -266,13 +247,11 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
       <button data-q="100000">100K</button>
       <button data-q="1000000">1M</button>
     </div>
-
     <div class="chance-header">
       <span>Шанс выигрыша</span>
       <span id="chanceValue">50%</span>
     </div>
     <input type="range" class="chance-slider" id="chanceSlider" min="1" max="95" value="50" step="1">
-
     <div class="payout-preview">
       <div class="payout-cell mult-cell">
         <div class="lbl">Множитель</div>
@@ -287,7 +266,6 @@ h1{text-align:center;font-size:24px;margin-bottom:10px;background:linear-gradien
         <div class="v" id="previewLose">100</div>
       </div>
     </div>
-
     <button class="btn-main" id="actionBtn">🎰 КРУТИТЬ</button>
   </div>
 
@@ -334,7 +312,344 @@ let state={balance:1000,lastBet:100,lastChance:50};
 function load(){try{const r=localStorage.getItem(SAVE_KEY);if(r){const d=JSON.parse(r);state.balance=d.balance??1000;state.lastBet=d.lastBet??100;state.lastChance=d.lastChance??50}}catch(e){}}
 function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(state))}catch(e){}}
 
-/* ============ ЛОГИКА ============ */
+/* ============ ПЕРЕМЕННЫЕ ============ */
 let spinning=false;
 let isAdmin=false;
-let arrow
+let arrowAngle=0;
+
+function multFromChance(chance){return (100/chance)*(1-HOUSE_EDGE)}
+
+/* ============ DOM ============ */
+const $balance=document.getElementById('balance');
+const $betInput=document.getElementById('betInput');
+const $chanceSlider=document.getElementById('chanceSlider');
+const $chanceValue=document.getElementById('chanceValue');
+const $previewMult=document.getElementById('previewMult');
+const $previewWin=document.getElementById('previewWin');
+const $previewLose=document.getElementById('previewLose');
+const $actionBtn=document.getElementById('actionBtn');
+const $resultDisplay=document.getElementById('resultDisplay');
+const $resultMain=document.getElementById('resultMain');
+const $resultSub=document.getElementById('resultSub');
+const $feed=document.getElementById('feed');
+const $feedCount=document.getElementById('feedCount');
+const $wheelArrow=document.getElementById('wheelArrow');
+const $segWin=document.getElementById('segWin');
+const $segLose=document.getElementById('segLose');
+const $centerText=document.getElementById('centerText');
+const $ticksGroup=document.getElementById('ticksGroup');
+
+let feedCount=0;
+function addFeed(type,text,val){
+  const empty=$feed.querySelector('.feed-empty');
+  if(empty)empty.remove();
+  const el=document.createElement('div');
+  el.className='feed-item '+type;
+  el.innerHTML=`<span>${text}</span>${val?`<span class="val">${val}</span>`:''}`;
+  $feed.appendChild(el);
+  feedCount++;
+  while($feed.children.length>50)$feed.removeChild($feed.firstChild);
+  $feedCount.textContent=feedCount;
+  $feed.scrollTop=$feed.scrollHeight;
+}
+
+function updateBalance(){
+  const prev=parseFloat($balance.dataset.raw||'0');
+  $balance.textContent=fmt(state.balance);
+  $balance.dataset.raw=state.balance;
+  if(state.balance>prev){$balance.classList.add('pop');setTimeout(()=>$balance.classList.remove('pop'),120)}
+}
+
+/* ============ РИСУЕМ КОЛЕСО ============ */
+function polar(cx,cy,r,deg){
+  const rad=(deg-90)*Math.PI/180;
+  return {x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)};
+}
+function arcPath(cx,cy,r,a1,a2){
+  if(a2-a1>=359.999){
+    return `M ${cx} ${cy-r} A ${r} ${r} 0 1 1 ${cx-0.01} ${cy-r} Z`;
+  }
+  const p1=polar(cx,cy,r,a1);
+  const p2=polar(cx,cy,r,a2);
+  const large=a2-a1>180?1:0;
+  return `M ${cx} ${cy} L ${p1.x} ${p1.y} A ${r} ${r} 0 ${large} 1 ${p2.x} ${p2.y} Z`;
+}
+
+function drawTicks(){
+  $ticksGroup.innerHTML='';
+  for(let i=0;i<60;i++){
+    const angle=i*6;
+    const isMajor=i%5===0;
+    const r1=isMajor?84:87;
+    const r2=89;
+    const p1=polar(100,100,r1,angle);
+    const p2=polar(100,100,r2,angle);
+    const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1',p1.x);line.setAttribute('y1',p1.y);
+    line.setAttribute('x2',p2.x);line.setAttribute('y2',p2.y);
+    line.setAttribute('class','wheel-tick'+(isMajor?' major':''));
+    $ticksGroup.appendChild(line);
+  }
+}
+
+function drawWheel(chance){
+  const R=85, cx=100, cy=100;
+  const winAngle=chance/100*360;
+  const startAngle=-90;
+  const winEnd=startAngle+winAngle;
+  const loseEnd=startAngle+360;
+  $segWin.setAttribute('d',arcPath(cx,cy,R,startAngle,winEnd));
+  $segLose.setAttribute('d',arcPath(cx,cy,R,winEnd,loseEnd));
+  $centerText.textContent=chance+'%';
+}
+
+function updatePreview(){
+  const bet=parseBet($betInput.value)||0;
+  const chance=parseInt($chanceSlider.value);
+  const mult=multFromChance(chance);
+  const win=Math.floor(bet*mult);
+  $chanceValue.textContent=chance+'%';
+  $previewMult.textContent=mult.toFixed(2)+'×';
+  $previewWin.textContent=fmt(win);
+  $previewLose.textContent=fmt(bet);
+  const pos=((chance-1)/94*100);
+  $chanceSlider.style.setProperty('--pos',pos+'%');
+  state.lastBet=bet;
+  state.lastChance=chance;
+  drawWheel(chance);
+}
+
+function toast(msg,type){
+  const t=document.createElement('div');
+  t.className='toast'+(type?' '+type:'');
+  t.textContent=msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(()=>t.classList.add('show'));
+  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},1600);
+}
+
+/* ============ БОНУС ПРИ НУЛЕ ============ */
+function checkBonus(){
+  if(state.balance<=0){
+    state.balance+=BONUS_AMOUNT;
+    updateBalance();
+    save();
+    toast('💜 Не волнуйся, не все потеряно!','win');
+    addFeed('info','💜 Не волнуйся, не все потеряно!','+'+fmt(BONUS_AMOUNT));
+  }
+}
+
+/* ============ КРУЧЕНИЕ СТРЕЛКИ ============ */
+function spinArrow(win){
+  const chance=parseInt($chanceSlider.value);
+  const winStart=-90;
+  const winEnd=-90+chance/100*360;
+  const loseStart=winEnd;
+  const loseEnd=-90+360;
+
+  let targetAngle;
+  if(win){
+    const range=winEnd-winStart;
+    const pad=range*0.1;
+    targetAngle=winStart+pad+Math.random()*(range-pad*2);
+  }else{
+    const range=loseEnd-loseStart;
+    const pad=range>20?range*0.05:0;
+    targetAngle=range>0?loseStart+pad+Math.random()*(range-pad*2):loseStart+0.5;
+  }
+
+  const baseFullTurns=5*360;
+  const currentNorm=((arrowAngle%360)+360)%360;
+  const targetNorm=((targetAngle%360)+360)%360;
+  let delta=targetNorm-currentNorm;
+  if(delta<0)delta+=360;
+  const totalRotation=baseFullTurns+delta;
+
+  arrowAngle+=totalRotation;
+  $wheelArrow.style.transform=`translate(0,-50%) rotate(${arrowAngle}deg)`;
+
+  return new Promise(res=>setTimeout(res,5100));
+}
+
+/* ============ ИГРА ============ */
+async function play(){
+  if(spinning)return;
+  const bet=parseBet($betInput.value);
+  if(isNaN(bet)||bet<=0){toast('Некорректная ставка','warn');return}
+  if(bet>state.balance){toast('Недостаточно средств','warn');addFeed('lose','❌ Не хватило на ставку','-'+fmt(bet-state.balance));return}
+
+  const chance=parseInt($chanceSlider.value);
+  const mult=multFromChance(chance);
+  spinning=true;
+  $actionBtn.disabled=true;
+  $chanceSlider.disabled=true;  // <-- блокируем слайдер во время кручения
+  $resultDisplay.className='result-display';
+  $resultMain.textContent='🎰';
+  $resultSub.textContent='Крутится...';
+
+  const win=Math.random()*100<chance;
+
+  state.balance-=bet;
+  updateBalance();
+
+  await spinArrow(win);
+
+  if(win){
+    const winAmount=Math.floor(bet*mult);
+    const profit=winAmount-bet;
+    state.balance+=winAmount;
+    updateBalance();
+    $resultDisplay.className='result-display win';
+    $resultMain.textContent='+'+fmt(profit);
+    $resultSub.textContent=`WIN ×${mult.toFixed(2)} (шанс ${chance}%)`;
+    addFeed('win',`✅ ×${mult.toFixed(2)} (${chance}%)`,'+'+fmt(profit));
+    toast('Победа! +'+fmt(profit),'win');
+  }else{
+    $resultDisplay.className='result-display lose';
+    $resultMain.textContent='-'+fmt(bet);
+    $resultSub.textContent=`BUST (шанс ${chance}%)`;
+    addFeed('lose',`💀 Проигрыш (${chance}%)`,'-'+fmt(bet));
+    toast('Проигрыш -'+fmt(bet),'warn');
+  }
+
+  spinning=false;
+  $actionBtn.disabled=false;
+  $chanceSlider.disabled=false; // <-- разблокируем
+  save();
+  checkBonus();
+}
+
+/* ============ АДМИН ============ */
+const $adminBtn=document.getElementById('adminBtn');
+const $adminPanel=document.getElementById('adminPanel');
+const $adminLogin=document.getElementById('adminLogin');
+const $adminContent=document.getElementById('adminContent');
+const $adminCode=document.getElementById('adminCode');
+
+$adminBtn.addEventListener('click',()=>{
+  $adminPanel.classList.toggle('show');
+  $adminBtn.classList.toggle('active');
+  if(!isAdmin){
+    $adminLogin.style.display='block';
+    $adminContent.style.display='none';
+  }else{
+    $adminLogin.style.display='none';
+    $adminContent.style.display='block';
+  }
+});
+
+document.getElementById('adminClose').addEventListener('click',()=>{
+  $adminPanel.classList.remove('show');
+  $adminBtn.classList.remove('active');
+});
+
+document.getElementById('adminLoginBtn').addEventListener('click',()=>{
+  const code=$adminCode.value.trim();
+  if(code===ADMIN_CODE){
+    isAdmin=true;
+    $adminLogin.style.display='none';
+    $adminContent.style.display='block';
+    $adminCode.value='';
+    toast('✅ Доступ разрешён','win');
+    addFeed('admin','🛡️⭐ Админ вошёл в систему','');
+  }else{
+    toast('❌ Неверный код','warn');
+    $adminCode.value='';
+  }
+});
+$adminCode.addEventListener('keydown',(e)=>{
+  if(e.key==='Enter')document.getElementById('adminLoginBtn').click();
+});
+
+document.getElementById('adminLogout').addEventListener('click',()=>{
+  isAdmin=false;
+  $adminLogin.style.display='block';
+  $adminContent.style.display='none';
+  toast('🚪 Вы вышли из админки');
+});
+
+document.getElementById('adminAdd').addEventListener('click',()=>{
+  if(!isAdmin)return;
+  const amount=parseBet(document.getElementById('adminAmount').value);
+  if(isNaN(amount)||amount<=0){toast('Некорректная сумма','warn');return}
+  state.balance+=amount;
+  updateBalance();
+  save();
+  addFeed('admin','💰 Админ пополнил баланс','+'+fmt(amount));
+  toast('+'+fmt(amount)+' добавлено','win');
+});
+
+document.getElementById('adminMax').addEventListener('click',()=>{
+  if(!isAdmin)return;
+  state.balance+=1e7;
+  updateBalance();save();
+  addFeed('admin','💰 Админ пополнил баланс','+10M');
+  toast('+10M добавлено','win');
+});
+
+document.getElementById('adminBillion').addEventListener('click',()=>{
+  if(!isAdmin)return;
+  state.balance+=1e9;
+  updateBalance();save();
+  addFeed('admin','💰 Админ пополнил баланс','+1B');
+  toast('+1B добавлено','win');
+});
+
+document.getElementById('adminZero').addEventListener('click',()=>{
+  if(!isAdmin)return;
+  if(!confirm('Обнулить баланс?'))return;
+  state.balance=0;
+  updateBalance();save();
+  addFeed('admin','🗑 Админ обнулил баланс','0');
+  toast('Баланс обнулён','warn');
+  checkBonus();
+});
+
+/* ============ СОБЫТИЯ ============ */
+$actionBtn.addEventListener('click',play);
+$betInput.addEventListener('input',updatePreview);
+$chanceSlider.addEventListener('input',updatePreview);
+
+document.getElementById('betHalf').addEventListener('click',()=>{
+  if(spinning)return;
+  const v=parseBet($betInput.value);
+  if(!isNaN(v))$betInput.value=Math.max(1,Math.floor(v/2));
+  updatePreview();
+});
+document.getElementById('betDouble').addEventListener('click',()=>{
+  if(spinning)return;
+  const v=parseBet($betInput.value);
+  if(!isNaN(v))$betInput.value=Math.min(state.balance,Math.floor(v*2));
+  updatePreview();
+});
+document.querySelectorAll('.bet-quick button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    if(spinning)return;
+    $betInput.value=b.dataset.q;
+    updatePreview();
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  if(!confirm('Точно сбросить весь прогресс?'))return;
+  localStorage.removeItem(SAVE_KEY);
+  state={balance:1000,lastBet:100,lastChance:50};
+  $feed.innerHTML='<div class="feed-empty">Прогресс сброшен. Баланс: 1K</div>';
+  feedCount=0;$feedCount.textContent='0';
+  addFeed('info','🔄 Игра сброшена. Начальный баланс: '+fmt(1000),'');
+  updateBalance();
+  save();
+});
+
+/* ============ СТАРТ ============ */
+load();
+$betInput.value=state.lastBet;
+$chanceSlider.value=state.lastChance;
+drawTicks();
+updateBalance();
+updatePreview();
+addFeed('info','🎮 Выбирай ставку и шанс. Удачи!','');
+checkBonus();
+</script>
+</body>
+</html>
